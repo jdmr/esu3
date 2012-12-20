@@ -10,4 +10,5 @@ class ArticuloController {
         log.debug("Lista de articulos")
         return articuloService.lista(params)
     }
+
 }

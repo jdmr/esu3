@@ -22,10 +22,18 @@
       <![endif]-->
 
       <div class="container">
-          <div id="logo" role="banner"><a href="${createLink(uri:'/')}"><img src="${resource(dir: 'images', file: 'logo.jpg')}" alt="Escuela Sabática Universitaria"/></a></div>
+          <div class="row">
+              <div class="span12">
+                  <div id="logo" role="banner"><a href="${createLink(uri:'/')}"><img src="${resource(dir: 'images', file: 'logo.jpg')}" alt="Escuela Sabática Universitaria"/></a></div>
+              </div>
+          </div>
+
           <g:layoutBody/>
-          <div class="footer" role="contentinfo">
-              <p>&copy; 2012 Universidad de Montemorelos</p>
+
+          <div class="row footer" role="contentinfo">
+              <div class="span12">
+                  <p>&copy; 2012 Universidad de Montemorelos</p>
+              </div>
           </div>
       </div>
       <g:javascript library="application"/>
