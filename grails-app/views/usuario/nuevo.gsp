@@ -11,10 +11,18 @@
             <h1><g:message code="usuario.nuevo.title" /></h1>
         </div>
     </div>
-    <div class="row">
-        <div class="span12 well">
-            <a href="#" class="btn btn-primary btn-large"><g:message code="usuario.lista.button" /></a>
-        </div>
-    </div>
+    <g:hasErrors bean="${usuario}">
+      <div class="alert alert-block alert-error">
+        <h1><g:message code="errors.title" /></h1>
+        <g:eachError bean="${usuario}">
+            <p><g:message error="${error}" /></p>
+        </g:eachError>
+      </div>
+    </g:hasErrors>
+    <g:form action="crea">
+        <filedset>
+            <g:render template="form" />
+        </filedset>
+    </g:form>
 </body>
 </html>

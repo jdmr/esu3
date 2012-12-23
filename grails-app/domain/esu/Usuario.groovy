@@ -6,14 +6,20 @@ class Usuario {
 
 	String username
 	String password
+    String nombre
+    String apellido
 	boolean enabled = true
 	boolean accountExpired = false
 	boolean accountLocked = false
 	boolean passwordExpired = false
+    Date dateCreated
+    Date lastUpdated
 
 	static constraints = {
 		username blank: false, unique: true, email: true
 		password blank: false
+        nombre blank: false
+        apellido blank: false
 	}
 
 	static mapping = {

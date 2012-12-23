@@ -26,25 +26,25 @@ class BootStrap {
 
         Integer admins = Usuario.countByRole('ROLE_ADMIN')
         if (admins == 0) {
-            Usuario usuarioAdmin = new Usuario(username: 'admin@um.edu.mx', password: 'admin').save(flush: true)
+            Usuario usuarioAdmin = new Usuario(username: 'admin@um.edu.mx', password: 'admin', nombre:'Usuario', apellido: 'Administrador').save(flush: true)
             UsuarioRol.create(usuarioAdmin, admin, true)
         }
 
         Integer editores = Usuario.countByRole('ROLE_EDITOR')
         if (editores == 0) {
-            Usuario usuarioEditor = new Usuario(username: 'editor@um.edu.mx', password: 'editor').save(flush: true)
+            Usuario usuarioEditor = new Usuario(username: 'editor@um.edu.mx', password: 'editor', nombre:'Usuario', apellido: 'Editor').save(flush: true)
             UsuarioRol.create(usuarioEditor, editor, true)
         }
 
         Integer autores = Usuario.countByRole('ROLE_AUTOR')
         if (autores == 0) {
-            Usuario usuarioAutor = new Usuario(username: 'autor@um.edu.mx', password: 'autor').save(flush: true)
+            Usuario usuarioAutor = new Usuario(username: 'autor@um.edu.mx', password: 'autor', nombre:'Usuario', apellido: 'Autor').save(flush: true)
             UsuarioRol.create(usuarioAutor, autor, true)
         }
 
         Integer usuarios = Usuario.countByRole('ROLE_USER')
         if (usuarios == 0) {
-            Usuario usuario = new Usuario(username: 'usuario@um.edu.mx', password: 'usuario').save(flush: true)
+            Usuario usuario = new Usuario(username: 'usuario@um.edu.mx', password: 'usuario', nombre:'Usuario', apellido: 'Normal').save(flush: true)
             UsuarioRol.create(usuario, user, true)
         }
 

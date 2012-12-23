@@ -14,7 +14,7 @@
     <div class="row">
         <div class="span12 well">
             <a href="${createLink(action:'lista')}" class="btn btn-primary btn-large"><i class="icon-list icon-white"></i> <g:message code="usuario.lista.button" /></a>
-            <a href="#" class="btn btn-primary btn-large"><i class="icon-plus icon-white"></i> <g:message code="usuario.nuevo.title" /></a>
+            <a href="${createLink(action:'nuevo')}" class="btn btn-primary btn-large"><i class="icon-plus icon-white"></i> <g:message code="usuario.nuevo.title" /></a>
         </div>
     </div>
     <div class="row">

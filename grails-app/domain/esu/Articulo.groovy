@@ -2,6 +2,7 @@ package esu
 
 class Articulo implements Serializable {
     String titulo
+    String descripcion
     String contenido
     Date dateCreated
     Date lastUpdated
@@ -10,7 +11,8 @@ class Articulo implements Serializable {
 
     static constraints = {
         titulo blank: false
-        contenido blank: false
+        descripcion nullable: true, maxSize: 10000
+        contenido blank: false, maxSize: 1000000
     }
 
     static mapping = {
