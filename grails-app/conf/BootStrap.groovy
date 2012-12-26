@@ -1,4 +1,5 @@
 import esu.Rol
+import esu.Trimestre
 import esu.Usuario
 import esu.UsuarioRol
 
@@ -46,6 +47,44 @@ class BootStrap {
         if (usuarios == 0) {
             Usuario usuario = new Usuario(username: 'usuario@um.edu.mx', password: 'usuario', nombre:'Usuario', apellido: 'Normal').save(flush: true)
             UsuarioRol.create(usuario, user, true)
+        }
+
+        log.debug('Trimestres')
+
+        Integer trimestres = Trimestre.count()
+        if (trimestres == 0) {
+            new Trimestre(
+                    nombre: '2011t2'
+                    , fecha: new GregorianCalendar(2011, Calendar.MARCH, 26).time
+            ).save(flush: true)
+            new Trimestre(
+                    nombre: '2011t3'
+                    , fecha: new GregorianCalendar(2011, Calendar.JUNE, 25).time
+            ).save(flush: true)
+            new Trimestre(
+                    nombre: '2011t4'
+                    , fecha: new GregorianCalendar(2011, Calendar.SEPTEMBER, 24).time
+            ).save(flush: true)
+            new Trimestre(
+                    nombre: '2012t1'
+                    , fecha: new GregorianCalendar(2011, Calendar.DECEMBER, 31).time
+            ).save(flush: true)
+            new Trimestre(
+                    nombre: '2012t2'
+                    , fecha: new GregorianCalendar(2012, Calendar.MARCH, 31).time
+            ).save(flush: true)
+            new Trimestre(
+                    nombre: '2012t3'
+                    , fecha: new GregorianCalendar(2012, Calendar.JUNE, 30).time
+            ).save(flush: true)
+            new Trimestre(
+                    nombre: '2012t4'
+                    , fecha: new GregorianCalendar(2012, Calendar.SEPTEMBER, 29).time
+            ).save(flush: true)
+            new Trimestre(
+                    nombre: '2013t1'
+                    , fecha: new GregorianCalendar(2012, Calendar.DECEMBER, 29).time
+            ).save(flush: true)
         }
 
         log.info('ESU ha iniciado')

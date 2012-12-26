@@ -29,6 +29,11 @@ class InicializaService {
             usuarios."${rs.getString('screenname')}" = rs.getString('emailaddress')
         }
 
+        List<Trimestre> lista = Trimestre.list()
+        Map<String, Trimestre> trimestres = [:]
+        for(trimestre in lista) {
+            trimestres.put(trimestre.nombre, trimestre)
+        }
         Usuario editor = Usuario.findByUsername('editor@um.edu.mx')
         stmt2 = src.createStatement()
         rs = stmt.executeQuery("select a.entryid, a.groupid, a.companyid, a.userid, a.username, a.createdate, a.classpk, a.title, a.viewcount, d.screenname from assetentry a, assetentries_assettags b, assettag c, user_ d where a.entryid = b.entryid and b.tagid = c.tagid and a.userid = d.userid and classnameid = 10084 and a.companyid = 15686 order by a.createdate, a.entryid")
@@ -104,6 +109,7 @@ class InicializaService {
                                 , descripcion: descripcion
                                 , autor: autor
                                 , vistas: rs.getInt('viewcount')
+                                , dateCreated: rs.getTimestamp('createdate')
                         ).save(flush: true)
 
                         for(String x in tags.'leccion') {
@@ -117,6 +123,8 @@ class InicializaService {
                                     , dia: (tags.'dia')?tags.'dia'[0]:null
                                     , es: articulo
                                     , editor: editor
+                                    , fecha: rs.getTimestamp('createdate')
+                                    , padre: trimestres.get(tags.'anio'[0]+tags.'trimestre'[0])
                             ).save(flush: true)
 
                             if (publicacion.tipo.equals('comunica') || publicacion.tipo.equals('dialoga')) {
