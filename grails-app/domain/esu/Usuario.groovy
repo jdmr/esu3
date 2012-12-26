@@ -14,6 +14,8 @@ class Usuario {
 	boolean passwordExpired = false
     Date dateCreated
     Date lastUpdated
+    Integer articulos = 0
+    Integer publicaciones = 0
 
 	static constraints = {
 		username blank: false, unique: true, email: true

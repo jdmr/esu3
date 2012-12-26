@@ -6,6 +6,7 @@ class Articulo implements Serializable {
     String contenido
     Date dateCreated
     Date lastUpdated
+    Integer vistas = 0
 
     static belongsTo = [autor: Usuario]
 
