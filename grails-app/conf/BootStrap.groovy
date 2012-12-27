@@ -55,35 +55,43 @@ class BootStrap {
         if (trimestres == 0) {
             new Trimestre(
                     nombre: '2011t2'
-                    , fecha: new GregorianCalendar(2011, Calendar.MARCH, 26).time
+                    , inicia: new GregorianCalendar(2011, Calendar.MARCH, 26).time
+                    , termina: new GregorianCalendar(2011, Calendar.JUNE, 25).time
             ).save(flush: true)
             new Trimestre(
                     nombre: '2011t3'
-                    , fecha: new GregorianCalendar(2011, Calendar.JUNE, 25).time
+                    , inicia: new GregorianCalendar(2011, Calendar.JUNE, 25).time
+                    , termina: new GregorianCalendar(2011, Calendar.SEPTEMBER, 24).time
             ).save(flush: true)
             new Trimestre(
                     nombre: '2011t4'
-                    , fecha: new GregorianCalendar(2011, Calendar.SEPTEMBER, 24).time
+                    , inicia: new GregorianCalendar(2011, Calendar.SEPTEMBER, 24).time
+                    , termina: new GregorianCalendar(2011, Calendar.DECEMBER, 31).time
             ).save(flush: true)
             new Trimestre(
                     nombre: '2012t1'
-                    , fecha: new GregorianCalendar(2011, Calendar.DECEMBER, 31).time
+                    , inicia: new GregorianCalendar(2011, Calendar.DECEMBER, 31).time
+                    , termina: new GregorianCalendar(2012, Calendar.MARCH, 31).time
             ).save(flush: true)
             new Trimestre(
                     nombre: '2012t2'
-                    , fecha: new GregorianCalendar(2012, Calendar.MARCH, 31).time
+                    , inicia: new GregorianCalendar(2012, Calendar.MARCH, 31).time
+                    , termina: new GregorianCalendar(2012, Calendar.JUNE, 30).time
             ).save(flush: true)
             new Trimestre(
                     nombre: '2012t3'
-                    , fecha: new GregorianCalendar(2012, Calendar.JUNE, 30).time
+                    , inicia: new GregorianCalendar(2012, Calendar.JUNE, 30).time
+                    , termina: new GregorianCalendar(2012, Calendar.SEPTEMBER, 29).time
             ).save(flush: true)
             new Trimestre(
                     nombre: '2012t4'
-                    , fecha: new GregorianCalendar(2012, Calendar.SEPTEMBER, 29).time
+                    , inicia: new GregorianCalendar(2012, Calendar.SEPTEMBER, 29).time
+                    , termina: new GregorianCalendar(2012, Calendar.DECEMBER, 29).time
             ).save(flush: true)
             new Trimestre(
                     nombre: '2013t1'
-                    , fecha: new GregorianCalendar(2012, Calendar.DECEMBER, 29).time
+                    , inicia: new GregorianCalendar(2012, Calendar.DECEMBER, 29).time
+                    , termina: new GregorianCalendar(2013, Calendar.MARCH, 30).time
             ).save(flush: true)
         }
 

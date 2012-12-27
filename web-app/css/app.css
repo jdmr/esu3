@@ -1,1 +1,99 @@
-# App css
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+body {
+    padding-top: 160px;
+    font: 1em/1.625em 'Ubuntu',Tahoma,sans-serif;
+    font-size-adjust:none;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+}
+
+body > .navbar > .navbar-inner {
+    padding: 0;
+    background: #fff;
+    border:0;
+    border-radius:0;
+    box-shadow:0;
+}
+
+body > .footer {
+    margin-top: 20px;
+    padding: 20px 0;
+    background-color: #FAFAFA;
+    color: #777;
+}
+
+.navbar .nav > li > a {
+    border-right: 0;
+    border-left: 0;
+}
+
+.navbar .brand {
+    /*font-family: 'Oleo Script Swash Caps', cursive;*/
+    font-size: 3em;
+}
+
+/* Desktop large
+------------------------- */
+@media (min-width: 1200px) {
+}
+
+/* Desktop
+------------------------- */
+@media (max-width: 1199px) and (min-width: 981px) {
+
+}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 980px) {
+    /* Remove any padding from the body */
+    body {
+        padding-top: 0;
+    }
+
+    .navbar .brand {
+        font-size: 2em;
+    }
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+    /* Remove any padding from the body */
+    body {
+        padding-top: 0;
+    }
+
+    .navbar .brand {
+        font-size: 1.5em;
+    }
+
+    .brand > img {
+        height: 60px;
+        padding-left: 20px;
+    }
+}
+
+/* Landscape phones
+------------------------- */
+@media (max-width: 480px) {
+    /* Remove padding above jumbotron */
+    body {
+        padding-top: 0;
+    }
+
+    .navbar .brand {
+        font-size: 1.5em;
+    }
+
+    .brand > img {
+        height: 30px;
+        padding-left: 20px;
+    }
+}
+

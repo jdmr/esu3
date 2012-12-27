@@ -51,4 +51,8 @@ class Usuario {
         List results = executeQuery('select count(u) from Usuario u, UsuarioRol ur, Rol r where ur.usuario.id = u.id and ur.rol.id = r.id and r.authority = :authority', [authority: role])
         return results[0]
     }
+
+    String getNombreCompleto() {
+        return "$nombre $apellido"
+    }
 }

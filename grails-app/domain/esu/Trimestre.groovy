@@ -2,7 +2,8 @@ package esu
 
 class Trimestre {
     String nombre
-    Date fecha
+    Date inicia
+    Date termina
     Boolean publicado = true
 
     static constraints = {
@@ -11,5 +12,9 @@ class Trimestre {
 
     static mapping = {
         table 'trimestres'
+    }
+
+    String toString() {
+        return nombre
     }
 }
