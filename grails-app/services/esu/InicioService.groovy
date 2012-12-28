@@ -15,8 +15,16 @@ class InicioService {
             log.debug(leccion1.es)
         }
 
+        Publicacion versiculo = Publicacion.find("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'versiculo'])
+        log.debug("Versiculo: $versiculo")
+        if (versiculo) {
+            versiculo.titulo = versiculo.es.titulo
+            versiculo.descripcion = versiculo.es.descripcion
+            versiculo.contenido = versiculo.es.contenido
+        }
+
         Publicacion video = Publicacion.find("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'video'])
-        log.debug("Publicacion: $video")
+        log.debug("Video: $video")
         if (video) {
             video.titulo = video.es.titulo
             video.descripcion = video.es.descripcion
@@ -41,7 +49,7 @@ class InicioService {
             publicacion.autor = publicacion.es.autor
         }
 
-        return [leccion: leccion1, dialoga: dialoga, comunica: comunica, video: video]
+        return [leccion: leccion1, dialoga: dialoga, comunica: comunica, video: video, versiculo: versiculo]
     }
 
     def inicio(params) {

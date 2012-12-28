@@ -11,7 +11,7 @@ class ProfundizaController {
 
     def ver() {
         log.debug("Ver Profundiza $params")
-        def resultado = articuloService.profundiza(params.anio, params.trimestre, params.leccion, params.tema)
+        def resultado = articuloService.tema('dialoga', params.anio, params.trimestre, params.leccion, params.tema)
         return resultado
     }
 }

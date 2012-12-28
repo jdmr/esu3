@@ -19,6 +19,13 @@
                 </g:if>
             </div>
         </div>
+        <g:if test="${versiculo}">
+            <div class="row">
+                <div class="span12 well versiculo" style="margin-bottom: 0px;margin-top: 10px;">
+                    ${versiculo.contenido}
+                </div>
+            </div>
+        </g:if>
         <div class="row">
             <div class="span6">
                 <g:each in="${dialoga}" var="publicacion">

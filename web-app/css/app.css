@@ -2,9 +2,10 @@
    Author's custom styles
    ========================================================================== */
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+/*@import url(http://fonts.googleapis.com/css?family=Playball);*/
 
 body {
-    padding-top: 160px;
+    padding-top: 170px;
     font: 1em/1.625em 'Ubuntu',Tahoma,sans-serif;
     font-size-adjust:none;
     font-style:normal;
@@ -35,6 +36,13 @@ body > .footer {
 .navbar .brand {
     /*font-family: 'Oleo Script Swash Caps', cursive;*/
     font-size: 3em;
+}
+
+.versiculo > p {
+    /*font-family: 'Playball', cursive;*/
+    font-size: 1.2em;
+    /*text-align: center;*/
+    font-weight: bold;
 }
 
 /* Desktop large
