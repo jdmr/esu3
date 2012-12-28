@@ -44,46 +44,6 @@ class InicioService {
         return [leccion: leccion1, dialoga: dialoga, comunica: comunica, video: video]
     }
 
-    def inicioPorFecha(String anio, String mes, String dia) {
-        def hoy = new GregorianCalendar(2012, mes, dia)
-        log.debug("HOY: $hoy.time")
-        Trimestre trimestre = Trimestre.find('from Trimestre where :hoy between inicia and termina and publicado = true', [hoy: hoy.time])
-        log.debug(trimestre)
-        Publicacion leccion1 = Publicacion.find("from Publicacion where padre = :padre and leccion = :leccion and dia = :dia and tipo = :tipo and estatus = 'PUBLICADO'", [padre: trimestre, leccion: leccion, tipo: 'leccion', dia:obtieneDia(hoy.get(Calendar.DAY_OF_WEEK))])
-        log.debug("Publicacion: $leccion1")
-        if (leccion1) {
-            leccion1.titulo = leccion1.es.titulo
-            leccion1.descripcion = leccion1.es.descripcion
-            leccion1.contenido = leccion1.es.contenido
-            log.debug(leccion1.es)
-        }
-
-        Publicacion video = Publicacion.find("from Publicacion where padre = :padre and leccion = :leccion and dia = :dia and tipo = :tipo and estatus = 'PUBLICADO'", [padre: trimestre, leccion: leccion, tipo: 'video'])
-        log.debug("Publicacion: $video")
-        if (video) {
-            video.titulo = video.es.titulo
-            video.descripcion = video.es.descripcion
-            video.contenido = video.es.contenido
-        }
-
-        List<Publicacion> dialoga = Publicacion.findAll("from Publicacion where padre = :padre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [padre: trimestre, leccion: leccion, tipo: 'dialoga'])
-        for(publicacion in dialoga) {
-            log.debug("$publicacion $publicacion.es")
-            publicacion.titulo = publicacion.es.titulo
-            publicacion.descripcion = publicacion.es.descripcion
-            publicacion.contenido = publicacion.es.contenido
-        }
-
-        List<Publicacion> comunica = Publicacion.findAll("from Publicacion where padre = :padre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [padre: trimestre, leccion: leccion, tipo: 'comunica'])
-        for(publicacion in comunica) {
-            log.debug("$publicacion $publicacion.es")
-            publicacion.titulo = publicacion.es.titulo
-            publicacion.descripcion = publicacion.es.descripcion
-            publicacion.contenido = publicacion.es.contenido
-        }
-        return [leccion: leccion1, dialoga: dialoga, comunica: comunica]
-    }
-
     def inicio(params) {
         def hoy = new GregorianCalendar()
         log.debug("HOY: $hoy.time")
@@ -100,7 +60,7 @@ class InicioService {
         numberFormat.minimumIntegerDigits = 2
         String leccion = "l${numberFormat.format(weeks)}"
         log.debug("leccion: ${leccion}")
-        return [anio: hoy.get(Calendar.YEAR), trimestre: trimestre.nombre.substring(4), leccion: leccion, dia: obtieneDia(hoy.get(Calendar.DAY_OF_WEEK))]
+        return [anio: hoy.get(Calendar.YEAR), trimestre: trimestre.nombre.substring(4), leccion: leccion, dia: obtieneDia(hoy.get(Calendar.DAY_OF_WEEK)), hoy: hoy]
     }
 
     String obtieneDia(int dia) {
