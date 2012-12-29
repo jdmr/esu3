@@ -68,7 +68,7 @@ class InicioService {
         numberFormat.minimumIntegerDigits = 2
         String leccion = "l${numberFormat.format(weeks)}"
         log.debug("leccion: ${leccion}")
-        return [anio: hoy.get(Calendar.YEAR), trimestre: trimestre.nombre.substring(4), leccion: leccion, dia: obtieneDia(hoy.get(Calendar.DAY_OF_WEEK)), hoy: hoy]
+        return [anio: hoy.get(Calendar.YEAR), trimestre: trimestre.nombre.substring(4), leccion: leccion, dia: obtieneDia(hoy.get(Calendar.DAY_OF_WEEK))]
     }
 
     String obtieneDia(int dia) {

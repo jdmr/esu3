@@ -12,7 +12,7 @@ class UrlMappings {
 
         name inicio:"/inicio/$anio/$trimestre/$leccion/$dia?" (controller: "inicio", action: "ver")
 
-        name estudia:"/estudia/$anio/$trimestre/$leccion/$dia" (controller: "dialoga", action: "ver")
+        name estudia:"/estudia/$anio/$trimestre/$leccion/$dia" (controller: "estudia", action: "ver")
 
         name dialoga:"/profundiza/$anio/$trimestre/$leccion/$tema" (controller: "profundiza", action: "ver")
 
