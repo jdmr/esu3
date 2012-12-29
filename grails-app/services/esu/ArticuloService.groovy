@@ -20,9 +20,18 @@ class ArticuloService {
             publicacion.contenido = publicacion.es.contenido
             publicacion.autor = publicacion.es.autor
 
-            articulos = Publicacion.executeQuery("select new map(p.es.titulo as titulo, p.fecha as fecha, p.anio as anio, p.trimestre as trimestre, p.leccion as leccion, p.tema as tema) from Publicacion p where p.es.autor.id = :autorId",[autorId: publicacion.es.autor.id])
+            articulos = Publicacion.executeQuery("select new map(p.es.titulo as titulo, p.fecha as fecha, p.anio as anio, p.trimestre as trimestre, p.leccion as leccion, p.tema as tema, p.es.id as id, p.tipo as tipo) from Publicacion p where p.es.autor.id = :autorId",[autorId: publicacion.es.autor.id])
         }
-        return [publicacion: publicacion, articulos: articulos]
+        Map<Long, Long> filtro = [:]
+        List<Map> resultado = []
+        for(articulo in articulos) {
+            Integer id = filtro.get(articulo.id)
+            if (!id) {
+                resultado << articulo
+                filtro.put(articulo.id, articulo.id)
+            }
+        }
+        return [publicacion: publicacion, articulos: resultado]
     }
 
     def leccion(String anio, String trimestre, String leccion, String dia) {

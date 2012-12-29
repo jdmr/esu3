@@ -38,6 +38,7 @@ class InicializaService {
         stmt2 = src.createStatement()
         rs = stmt.executeQuery("select a.entryid, a.groupid, a.companyid, a.userid, a.username, a.createdate, a.classpk, a.classnameid, a.title, a.viewcount, a.url, d.screenname from assetentry a, assetentries_assettags b, assettag c, user_ d where a.entryid = b.entryid and b.tagid = c.tagid and a.userid = d.userid and (classnameid = 10084 or classnameid = 10070) and a.companyid = 15686 order by a.createdate, a.entryid")
         Map<String, String> entries = [:]
+        Map<String, Integer> temas = [:]
         while(rs.next()) {
             if (!entries.containsKey(rs.getString('entryid'))) {
                 if (rs.getLong('classnameid')==10084){
@@ -115,6 +116,14 @@ class InicializaService {
 
                             for(String x in tags.'leccion') {
                                 log.debug("DIA: ${tags.'dia'}")
+                                if (tags.'tipo' && (tags.tipo[0].equals('dialoga') || tags.tipo[0].equals('comunica'))) {
+                                    Integer tema = temas."${tags.tipo[0]}${tags.'anio'[0]}${tags.'trimestre'[0]}${x}"
+                                    if (!tema) {
+                                        tema = 1
+                                    }
+                                    tags.'tema' = ["tema${tema++}"]
+                                    temas."${tags.tipo[0]}${tags.'anio'[0]}${tags.'trimestre'[0]}${x}" = tema
+                                }
                                 Publicacion publicacion = new Publicacion(
                                         anio: tags.'anio'[0]
                                         , trimestre: tags.'trimestre'[0]
