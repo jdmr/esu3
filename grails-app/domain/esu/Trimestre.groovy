@@ -15,6 +15,6 @@ class Trimestre implements Serializable {
     }
 
     String toString() {
-        return nombre
+        return "$nombre : $inicia : $termina"
     }
 }

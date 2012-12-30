@@ -4,6 +4,8 @@ import java.text.NumberFormat
 
 class ArticuloService {
 
+    def inicioService
+
     def lista(params) {
         return [articulos: Articulo.list(params), total: Articulo.count()]
     }
@@ -40,6 +42,8 @@ class ArticuloService {
     }
 
     def leccion(String anio, String trimestre, String leccion, String dia) {
+        Map ayer
+        Map manana
         List<Publicacion> dialoga
         List<Publicacion> comunica
         Date hoy
@@ -52,24 +56,44 @@ class ArticuloService {
             publicacion.contenido = publicacion.es.contenido
             publicacion.autor = publicacion.es.autor
 
+            log.debug("FECHAS")
             NumberFormat nf = NumberFormat.instance
             Trimestre t = Trimestre.find("from Trimestre where nombre = :nombre",[nombre:"${anio}${trimestre}"])
+            log.debug("TRIMESTRE: $t")
             Calendar cal = new GregorianCalendar()
             cal.time = t.inicia
+            log.debug("HOY1: ${cal.time}")
+            cal.add(Calendar.SECOND, 1)
             cal.set(Calendar.DAY_OF_WEEK, obtieneDia(dia))
+            log.debug("HOY2: ${cal.time} : ${leccion}")
+            int weeks = ((Long)nf.parse(leccion.substring(1))).intValue()
             if (dia.equals('sabado')) {
-                cal.add(Calendar.WEEK_OF_YEAR, ((Long)nf.parse(leccion.substring(1) + 1)).intValue())
-            } else {
-                cal.add(Calendar.WEEK_OF_YEAR, ((Long)nf.parse(leccion.substring(1))).intValue())
+                weeks--
             }
+            log.debug("WEEKS3: ${cal.get(Calendar.WEEK_OF_YEAR)} + $weeks")
+            cal.add(Calendar.WEEK_OF_YEAR, weeks)
+            log.debug("WEEKS4: ${cal.get(Calendar.WEEK_OF_YEAR)}")
             hoy = cal.time
+            log.debug("HOY3: ${cal.time}")
+
+
+            cal.add(Calendar.DAY_OF_MONTH, -1)
+            Date fechaAyer = cal.time
+            log.debug("Hoy: $hoy | Ayer: $fechaAyer")
+            ayer = inicioService.inicio(cal)
+            log.debug("Ayer: $ayer")
+
+            cal.add(Calendar.DAY_OF_MONTH, 2)
+            Date fechaManana = cal.time
+            log.debug("Hoy: $hoy | Manana: $fechaManana")
+            manana = inicioService.inicio(cal)
+            log.debug("Manana: $manana")
 
             versiculo = Publicacion.find("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = 'versiculo' and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion])
             versiculo.contenido = versiculo.es.contenido
 
             dialoga = Publicacion.findAll("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'dialoga'])
             for(articulo in dialoga) {
-                log.debug("$articulo $articulo.es")
                 articulo.titulo = articulo.es.titulo
                 articulo.descripcion = articulo.es.descripcion
                 articulo.contenido = articulo.es.contenido
@@ -78,7 +102,6 @@ class ArticuloService {
 
             comunica = Publicacion.findAll("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'comunica'])
             for(articulo in comunica) {
-                log.debug("$articulo $articulo.es")
                 articulo.titulo = articulo.es.titulo
                 articulo.descripcion = articulo.es.descripcion
                 articulo.contenido = articulo.es.contenido
@@ -87,7 +110,7 @@ class ArticuloService {
             
         }
 
-        return [publicacion: publicacion, versiculo: versiculo, hoy: hoy, dialoga:dialoga, comunica:comunica]
+        return [publicacion: publicacion, versiculo: versiculo, hoy: hoy, dialoga:dialoga, comunica:comunica, ayer: ayer, manana: manana]
     }
 
     Integer obtieneDia(String dia) {

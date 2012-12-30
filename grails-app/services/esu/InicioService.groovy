@@ -1,5 +1,8 @@
 package esu
 
+import org.joda.time.DateTime
+import org.joda.time.Weeks
+
 import java.text.NumberFormat
 
 class InicioService {
@@ -54,19 +57,21 @@ class InicioService {
 
     def inicio(params) {
         def hoy = new GregorianCalendar()
+        return inicio(hoy)
+    }
+
+    def inicio(Calendar hoy) {
         log.debug("HOY: $hoy.time")
         Trimestre trimestre = Trimestre.find('from Trimestre where :hoy between inicia and termina and publicado = true', [hoy: hoy.time])
         log.debug(trimestre)
 
-        Calendar a = new GregorianCalendar()
-        a.time = trimestre.inicia
-        int weeks = hoy.get(Calendar.WEEK_OF_YEAR) - a.get(Calendar.WEEK_OF_YEAR)
-        if (hoy.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
-            weeks++
-        }
-        if (weeks < 0) {
-            weeks = 1
-        }
+        DateTime a = new DateTime(trimestre.inicia)
+        DateTime b = new DateTime(hoy)
+        Weeks c = Weeks.weeksBetween(a, b)
+        int weeks = c.weeks
+        log.debug("WEEKS: $weeks")
+        weeks++
+        log.debug("WEEKS: $weeks")
         NumberFormat numberFormat = NumberFormat.getInstance()
         numberFormat.minimumIntegerDigits = 2
         String leccion = "l${numberFormat.format(weeks)}"

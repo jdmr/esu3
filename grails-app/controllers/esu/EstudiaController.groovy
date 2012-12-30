@@ -15,6 +15,10 @@ class EstudiaController {
     }
 
     def ver() {
+        session.anio = params.anio
+        session.trimestre = params.trimestre
+        session.leccion = params.leccion
+        session.dia = params.dia
         def resultado = articuloService.leccion(params.anio, params.trimestre, params.leccion, params.dia)
         return resultado
     }

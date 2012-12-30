@@ -17,9 +17,9 @@
                         </div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span3"><i class="icon-chevron-left"></i> Anterior</div>
+                        <div class="span3"><g:link mapping="estudia" params="[anio:ayer.anio, trimestre:ayer.trimestre, leccion:ayer.leccion, dia:ayer.dia]"><i class="icon-chevron-left"></i> Anterior</g:link></div>
                         <div class="span6" style="text-align: center;"><g:formatDate date="${hoy}" format="EEEE dd/MM/yyyy" locale="es" /></div>
-                        <div class="span3" style="text-align: right;">Siguiente <i class="icon-chevron-right"></i></div>
+                        <div class="span3" style="text-align: right;"><g:link mapping="estudia" params="[anio:manana.anio, trimestre:manana.trimestre, leccion:manana.leccion, dia:manana.dia]">Siguiente <i class="icon-chevron-right"></i></g:link></div>
                     </div>
                     <div class="row-fluid">
                         <div class="span12">
