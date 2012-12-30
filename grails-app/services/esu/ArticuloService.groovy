@@ -10,7 +10,7 @@ class ArticuloService {
         return [articulos: Articulo.list(params), total: Articulo.count()]
     }
 
-    def tema(String tipo, String anio, String trimestre, String leccion, String tema) {
+    def tema(String tipo, String anio, String trimestre, String leccion, String tema, String dia) {
         List<Map> articulos
         Integer aniol = new Integer(anio)
         Publicacion publicacion = Publicacion.find("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tema = :tema and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: tipo, tema: tema])
@@ -38,7 +38,16 @@ class ArticuloService {
             otro.descripcion = otro.es.descripcion
             otro.autor = otro.es.autor
         }
-        return [publicacion: publicacion, articulos: resultado, publicaciones: publicaciones]
+
+        Publicacion leccion1 = Publicacion.find("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and dia = :dia and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'leccion', dia: dia])
+        log.debug("Leccion: $leccion1")
+        if (leccion1) {
+            leccion1.titulo = leccion1.es.titulo
+            leccion1.descripcion = leccion1.es.descripcion
+            leccion1.contenido = leccion1.es.contenido
+        }
+
+        return [publicacion: publicacion, articulos: resultado, publicaciones: publicaciones, leccion: leccion1]
     }
 
     def leccion(String anio, String trimestre, String leccion, String dia) {

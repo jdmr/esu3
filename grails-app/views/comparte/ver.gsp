@@ -19,6 +19,10 @@
                         <h5>Por ${otro.autor.nombreCompleto}</h5>
                         ${otro.descripcion}
                     </g:each>
+                    <g:if test="${leccion}">
+                        <h3><g:link mapping="estudia" params="[anio:leccion.anio, trimestre:leccion.trimestre, leccion:leccion.leccion, dia:leccion.dia]">${leccion.titulo}</g:link></h3>
+                        ${leccion.descripcion}
+                    </g:if>
                     <g:if test="${articulos}">
                         <h3><g:message code="articulos.de.autor" args="[publicacion.autor.nombreCompleto]" /></h3>
                         <ul>
