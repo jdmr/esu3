@@ -29,24 +29,16 @@
         <div class="row">
             <div class="span6">
                 <g:each in="${dialoga}" var="publicacion">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <h2><g:link mapping="dialoga" params="[anio:publicacion.anio, trimestre:publicacion.trimestre, leccion:publicacion.leccion, tema:publicacion.tema]">${publicacion.titulo}</g:link></h2>
-                            <h4>Por ${publicacion.autor.nombreCompleto}</h4>
-                            <p>${publicacion.descripcion}</p>
-                        </div>
-                    </div>
+                    <h2><g:link mapping="dialoga" params="[anio:publicacion.anio, trimestre:publicacion.trimestre, leccion:publicacion.leccion, tema:publicacion.tema]">${publicacion.titulo}</g:link></h2>
+                    <h4>Por ${publicacion.autor.nombreCompleto}</h4>
+                    <p>${publicacion.descripcion}</p>
                 </g:each>
             </div>
             <div class="span6">
                 <g:each in="${comunica}" var="publicacion">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <h2><g:link mapping="comunica" params="[anio:publicacion.anio, trimestre:publicacion.trimestre, leccion:publicacion.leccion, tema:publicacion.tema]">${publicacion.titulo}</g:link></h2>
-                            <h4>Por ${publicacion.autor.nombreCompleto}</h4>
-                            <p>${publicacion.descripcion}</p>
-                        </div>
-                    </div>
+                    <h2><g:link mapping="comunica" params="[anio:publicacion.anio, trimestre:publicacion.trimestre, leccion:publicacion.leccion, tema:publicacion.tema]">${publicacion.titulo}</g:link></h2>
+                    <h4>Por ${publicacion.autor.nombreCompleto}</h4>
+                    <p>${publicacion.descripcion}</p>
                 </g:each>
             </div>
         </div>

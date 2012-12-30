@@ -53,7 +53,7 @@ class InicioService {
     }
 
     def inicio(params) {
-        def hoy = new GregorianCalendar()
+        def hoy = new GregorianCalendar(2012, Calendar.DECEMBER, 29, 0, 0, 1)
         log.debug("HOY: $hoy.time")
         Trimestre trimestre = Trimestre.find('from Trimestre where :hoy between inicia and termina and publicado = true', [hoy: hoy.time])
         log.debug(trimestre)
@@ -64,11 +64,14 @@ class InicioService {
         if (hoy.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
             weeks++
         }
+        if (weeks < 0) {
+            weeks = 1
+        }
         NumberFormat numberFormat = NumberFormat.getInstance()
         numberFormat.minimumIntegerDigits = 2
         String leccion = "l${numberFormat.format(weeks)}"
         log.debug("leccion: ${leccion}")
-        return [anio: hoy.get(Calendar.YEAR), trimestre: trimestre.nombre.substring(4), leccion: leccion, dia: obtieneDia(hoy.get(Calendar.DAY_OF_WEEK))]
+        return [anio: trimestre.nombre.substring(0,4), trimestre: trimestre.nombre.substring(4), leccion: leccion, dia: obtieneDia(hoy.get(Calendar.DAY_OF_WEEK))]
     }
 
     String obtieneDia(int dia) {
