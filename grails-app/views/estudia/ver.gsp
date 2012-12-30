@@ -3,7 +3,7 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title><g:message code="estudia.label" /></title>
-        <r:require modules="bootstrap,bootstrap-responsive-css,modernizr" />
+        <r:require modules="bootstrap,bootstrap-responsive-css,modernizr,jquery-ui" />
 	</head>
 	<body>
         <g:if test="${publicacion}">
@@ -29,6 +29,10 @@
                     </div>
                 </div>
                 <div class="span4">
+                    <form id="navegaForm" name="navegaForm" action="${createLink(action: 'buscaFecha')}" method="post">
+                        <input type="hidden" name="fechaNavegaTxt" id="fechaNavegaTxt" />
+                        <div id="fechaNavega"></div>
+                    </form>
                     <g:each in="${dialoga}" var="otro">
                         <h3><g:link mapping="dialoga" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${otro.titulo}</g:link></h3>
                         <h5>Por ${otro.autor.nombreCompleto}</h5>
@@ -42,5 +46,22 @@
                 </div>
             </div>
         </g:if>
+        <r:script>
+            $(function() {
+                $('div#fechaNavega').datepicker({
+                    altField:"input#fechaNavegaTxt",
+                    altFormat:"dd/mm/yy",
+                    dateFormat:"dd/mm/yy",
+                    defaultDate:"<g:formatDate date="${hoy}" format="dd/MM/yyyy" />",
+                    firstDay: 0,
+                    showOtherMonths: true,
+                    selectOtherMonths: true,
+                    minDate: "26/03/2011",
+                    onSelect:function(dateText, inst) {
+                        $("form#navegaForm").submit();
+                    }
+                });
+            });
+        </r:script>
 	</body>
 </html>

@@ -170,3 +170,11 @@ ckeditor {
         }
     }
 }
+
+grails.resources.modules = {
+    overrides {
+        'jquery-theme' {
+            resource id:'theme', url:'/css/custom-theme/jquery-ui-1.8.17.custom.css'
+        }
+    }
+}

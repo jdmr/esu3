@@ -67,5 +67,7 @@ grails.project.dependency.resolution = {
         compile ":spring-security-core:1.2.7.3"
         compile ":webxml:1.4.1"
         compile ":ckeditor:3.6.4.0"
+        compile ":jquery-ui:1.8.24"
+
     }
 }

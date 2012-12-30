@@ -1,5 +1,7 @@
 package esu
 
+import java.text.SimpleDateFormat
+
 class EstudiaController {
 
     def articuloService
@@ -21,5 +23,14 @@ class EstudiaController {
         session.dia = params.dia
         def resultado = articuloService.leccion(params.anio, params.trimestre, params.leccion, params.dia)
         return resultado
+    }
+
+    def buscaFecha() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy")
+        Calendar cal = new GregorianCalendar()
+        cal.time = sdf.parse(params.fechaNavegaTxt)
+        cal.add(Calendar.SECOND, 1)
+        def resultado = inicioService.inicio(cal)
+        redirect(mapping: 'estudia', params: resultado)
     }
 }
