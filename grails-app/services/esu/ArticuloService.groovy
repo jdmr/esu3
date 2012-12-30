@@ -6,10 +6,6 @@ class ArticuloService {
         return [articulos: Articulo.list(params), total: Articulo.count()]
     }
 
-    def profundiza(params) {
-
-    }
-
     def tema(String tipo, String anio, String trimestre, String leccion, String tema) {
         List<Map> articulos
         Integer aniol = new Integer(anio)
@@ -20,7 +16,7 @@ class ArticuloService {
             publicacion.contenido = publicacion.es.contenido
             publicacion.autor = publicacion.es.autor
 
-            articulos = Publicacion.executeQuery("select new map(p.es.titulo as titulo, p.fecha as fecha, p.anio as anio, p.trimestre as trimestre, p.leccion as leccion, p.tema as tema, p.es.id as id, p.tipo as tipo) from Publicacion p where p.es.autor.id = :autorId",[autorId: publicacion.es.autor.id])
+            articulos = Publicacion.executeQuery("select new map(p.es.titulo as titulo, p.fecha as fecha, p.anio as anio, p.trimestre as trimestre, p.leccion as leccion, p.tema as tema, p.es.id as id, p.tipo as tipo) from Publicacion p where p.es.autor.id = :autorId and p.estatus = 'PUBLICADO'",[autorId: publicacion.es.autor.id])
         }
         Map<Long, Long> filtro = [:]
         List<Map> resultado = []
@@ -31,7 +27,14 @@ class ArticuloService {
                 filtro.put(articulo.id, articulo.id)
             }
         }
-        return [publicacion: publicacion, articulos: resultado]
+
+        List<Publicacion> publicaciones = Publicacion.findAll("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tema != :tema and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: tipo, tema: tema])
+        for(otro in publicaciones) {
+            otro.titulo = otro.es.titulo
+            otro.descripcion = otro.es.descripcion
+            otro.autor = otro.es.autor
+        }
+        return [publicacion: publicacion, articulos: resultado, publicaciones: publicaciones]
     }
 
     def leccion(String anio, String trimestre, String leccion, String dia) {
