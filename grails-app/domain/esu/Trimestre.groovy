@@ -1,6 +1,6 @@
 package esu
 
-class Trimestre {
+class Trimestre implements Serializable {
     String nombre
     Date inicia
     Date termina

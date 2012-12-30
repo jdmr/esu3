@@ -1,6 +1,6 @@
 package esu
 
-class Usuario {
+class Usuario implements Serializable {
 
 	transient springSecurityService
 

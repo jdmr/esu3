@@ -1,6 +1,6 @@
 package esu
 
-class Publicacion {
+class Publicacion implements Serializable {
     Integer anio
     String trimestre
     String leccion

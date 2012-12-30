@@ -1,6 +1,6 @@
 package esu
 
-class Rol {
+class Rol implements Serializable {
 
 	String authority
 
