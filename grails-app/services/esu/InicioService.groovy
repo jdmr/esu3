@@ -53,7 +53,7 @@ class InicioService {
     }
 
     def inicio(params) {
-        def hoy = new GregorianCalendar(2012, Calendar.DECEMBER, 29, 0, 0, 1)
+        def hoy = new GregorianCalendar()
         log.debug("HOY: $hoy.time")
         Trimestre trimestre = Trimestre.find('from Trimestre where :hoy between inicia and termina and publicado = true', [hoy: hoy.time])
         log.debug(trimestre)
