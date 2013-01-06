@@ -2,14 +2,14 @@ package esu
 
 class Rol implements Serializable {
 
-	String authority
+    String authority
 
-	static mapping = {
+    static mapping = {
         table 'roles'
-		cache true
-	}
+        cache true
+    }
 
-	static constraints = {
-		authority blank: false, unique: true
-	}
+    static constraints = {
+        authority blank: false, unique: true
+    }
 }

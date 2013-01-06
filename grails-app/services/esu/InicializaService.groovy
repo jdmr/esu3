@@ -1,5 +1,7 @@
 package esu
 
+import org.springframework.web.util.HtmlUtils
+
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.ResultSet
@@ -105,6 +107,15 @@ class InicializaService {
                         if (tags.'anio'
                                 && tags.'trimestre'
                                 && tags.'tipo') {
+
+                            if (contenido.contains('/estudia?p_p_id=biblia_WAR_esportlet')) {
+                                log.debug("CAMBIANDO LIGAS A BIBLIA")
+                                contenido = contenido.replaceAll(/estudia.p_p_id=biblia_WAR_esportlet&amp;p_p_lifecycle=0&amp;p_p_state=normal&amp;p_p_mode=view&amp;p_p_col_id=column-2&amp;p_p_col_count=[0-9]+/,/esu\/biblia/)
+                                contenido = contenido.replaceAll(/&amp;_biblia_WAR_esportlet_libro=/, '/')
+                                contenido = contenido.replaceAll(/&amp;_biblia_WAR_esportlet_capitulo=/, '/')
+                                contenido = contenido.replaceAll(/&amp;_biblia_WAR_esportlet_versiculo=/, '/')
+                            }
+
                             Articulo articulo = new Articulo(
                                     titulo: titulo
                                     , contenido: contenido

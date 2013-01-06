@@ -22,6 +22,10 @@ class EstudiaController {
         session.leccion = params.leccion
         session.dia = params.dia
         def resultado = articuloService.leccion(params.anio, params.trimestre, params.leccion, params.dia)
+
+        String urlString = /http:\/\/escuelasabaticauniversitaria.org\/estudia\/${params.anio}\/${params.trimestre}\/${params.leccion}\/${params.dia}/
+        resultado.put('urlString', urlString)
+
         return resultado
     }
 
