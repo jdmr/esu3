@@ -17,11 +17,12 @@
                     <g:each in="${publicaciones}" var="otro">
                         <h3><g:link mapping="dialoga" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${otro.titulo}</g:link></h3>
                         <h5>Por ${otro.autor.nombreCompleto}</h5>
-                        ${otro.descripcion}
+                        ${otro.descripcion} <a href="${createLink(mapping: 'dialoga', params: [anio:otro.anio, trimestre: otro.trimestre, leccion: otro.leccion, tema:otro.tema])}"><g:message code="leer.mas.label"/></a>
                     </g:each>
                     <g:if test="${leccion}">
                         <h3><g:link mapping="estudia" params="[anio:leccion.anio, trimestre:leccion.trimestre, leccion:leccion.leccion, dia:leccion.dia]">${leccion.titulo}</g:link></h3>
-                        ${leccion.descripcion}
+                        <h5><g:formatDate date="${hoy}" format="EEEE dd/MMM/yyyy" locale="es" /></h5>
+                        ${leccion.descripcion} <a href="${createLink(mapping: 'estudia', params: [anio:leccion.anio, trimestre: leccion.trimestre, leccion: leccion.leccion, dia: leccion.dia])}"><g:message code="leer.mas.label"/></a>
                     </g:if>
                     <g:if test="${articulos}">
                         <h3><g:message code="articulos.de.autor" args="[publicacion.autor.nombreCompleto]" /></h3>

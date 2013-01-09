@@ -26,7 +26,7 @@
                     </div>
                     <div class="row-fluid">
                         <div class="span3"><g:link mapping="estudia" params="[anio:ayer.anio, trimestre:ayer.trimestre, leccion:ayer.leccion, dia:ayer.dia]"><i class="icon-chevron-left"></i> Anterior</g:link></div>
-                        <div class="span6" style="text-align: center;"><g:formatDate date="${hoy}" format="EEEE dd/MM/yyyy" locale="es" /></div>
+                        <div class="span6" style="text-align: center;"><g:formatDate date="${hoy}" format="EEEE dd/MMM/yyyy" locale="es" /></div>
                         <div class="span3" style="text-align: right;"><g:link mapping="estudia" params="[anio:manana.anio, trimestre:manana.trimestre, leccion:manana.leccion, dia:manana.dia]">Siguiente <i class="icon-chevron-right"></i></g:link></div>
                     </div>
                     <div class="row-fluid leccion">
@@ -79,7 +79,7 @@
                 $('.leccion a').click(function(e){
                     e.preventDefault();
 
-                    var link = $(this).attr('href')
+                    var link = $(this).attr('href');
 
                     $.ajax({
                         url: link
@@ -97,7 +97,7 @@
                 $(document).on("click", 'a.anterior', function(e){
                     e.preventDefault();
 
-                    var link = $(this).attr('href')
+                    var link = $(this).attr('href');
 
                     $.ajax({
                         url: link
@@ -115,7 +115,7 @@
                 $(document).on("click", 'a.siguiente', function(e){
                     e.preventDefault();
 
-                    var link = $(this).attr('href')
+                    var link = $(this).attr('href');
 
                     $.ajax({
                         url: link
@@ -133,13 +133,13 @@
 
             function buscaContenidoVersiculo(data) {
                 var items = [];
-                var bandera = true
+                var bandera = true;
                 var versiculo = 0;
                 var idInicio = 0;
                 var idFinal = 0;
                 $.each(data, function(i, item) {
                     if (bandera) {
-                        items.push('<h3>'+item.nombre+' '+item.capitulo+':'+item.versiculo+'</h3>')
+                        items.push('<h3>'+item.nombre+' '+item.capitulo+':'+item.versiculo+'</h3>');
                         bandera = false;
                         idInicio = item.id;
                     }

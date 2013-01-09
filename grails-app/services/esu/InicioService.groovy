@@ -4,6 +4,7 @@ import org.joda.time.DateTime
 import org.joda.time.Weeks
 
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 
 class InicioService {
 
@@ -52,7 +53,25 @@ class InicioService {
             publicacion.autor = publicacion.es.autor
         }
 
-        return [leccion: leccion1, dialoga: dialoga, comunica: comunica, video: video, versiculo: versiculo]
+        NumberFormat nf = NumberFormat.instance
+        Trimestre t = Trimestre.find("from Trimestre where nombre = :nombre",[nombre:"${anio}${trimestre}"])
+        log.debug("TRIMESTRE: $t")
+        Calendar cal = new GregorianCalendar()
+        cal.time = t.inicia
+        log.debug("HOY1: ${cal.time}")
+        cal.add(Calendar.SECOND, 1)
+        cal.set(Calendar.DAY_OF_WEEK, obtieneDia(dia))
+        log.debug("HOY2: ${cal.time} : ${leccion}")
+        int weeks = ((Long)nf.parse(leccion.substring(1))).intValue()
+        if (dia.equals('sabado')) {
+            weeks--
+        }
+        log.debug("WEEKS3: ${cal.get(Calendar.WEEK_OF_YEAR)} + $weeks")
+        cal.add(Calendar.WEEK_OF_YEAR, weeks)
+        log.debug("WEEKS4: ${cal.get(Calendar.WEEK_OF_YEAR)}")
+        Date hoy = cal.time
+
+        return [leccion: leccion1, dialoga: dialoga, comunica: comunica, video: video, versiculo: versiculo, hoy: hoy]
     }
 
     def inicio(params) {
@@ -62,6 +81,7 @@ class InicioService {
 
     def inicio(Calendar hoy) {
         log.debug("HOY: $hoy.time")
+
         Trimestre trimestre = Trimestre.find('from Trimestre where :hoy between inicia and termina and publicado = true', [hoy: hoy.time])
         log.debug(trimestre)
 
@@ -95,6 +115,30 @@ class InicioService {
                 return 'viernes'
             case Calendar.SATURDAY:
                 return 'sabado'
+            default:
+                return 'sabado'
         }
     }
+
+    Integer obtieneDia(String dia) {
+        switch(dia) {
+            case 'domingo':
+                return Calendar.SUNDAY
+            case 'lunes':
+                return Calendar.MONDAY
+            case 'martes':
+                return Calendar.TUESDAY
+            case 'miercoles':
+                return Calendar.WEDNESDAY
+            case 'jueves':
+                return Calendar.THURSDAY
+            case 'viernes':
+                return Calendar.FRIDAY
+            case 'sabado':
+                return Calendar.SATURDAY
+            default :
+                return Calendar.SATURDAY
+        }
+    }
+
 }

@@ -11,7 +11,7 @@ class ArticuloService {
     }
 
     def tema(String tipo, String anio, String trimestre, String leccion, String tema, String dia) {
-        List<Map> articulos
+        List<Map> articulos = []
         Integer aniol = new Integer(anio)
         Publicacion publicacion = Publicacion.find("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tema = :tema and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: tipo, tema: tema])
         if (publicacion) {
@@ -47,7 +47,28 @@ class ArticuloService {
             leccion1.contenido = leccion1.es.contenido
         }
 
-        return [publicacion: publicacion, articulos: resultado, publicaciones: publicaciones, leccion: leccion1]
+        log.debug("FECHAS")
+        NumberFormat nf = NumberFormat.instance
+        Trimestre t = Trimestre.find("from Trimestre where nombre = :nombre",[nombre:"${anio}${trimestre}"])
+        log.debug("TRIMESTRE: $t")
+        Calendar cal = new GregorianCalendar()
+        cal.time = t.inicia
+        log.debug("HOY1: ${cal.time}")
+        cal.add(Calendar.SECOND, 1)
+        cal.set(Calendar.DAY_OF_WEEK, obtieneDia(dia))
+        log.debug("HOY2: ${cal.time} : ${leccion}")
+        int weeks = ((Long)nf.parse(leccion.substring(1))).intValue()
+        if (dia.equals('sabado')) {
+            weeks--
+        }
+        log.debug("WEEKS3: ${cal.get(Calendar.WEEK_OF_YEAR)} + $weeks")
+        cal.add(Calendar.WEEK_OF_YEAR, weeks)
+        log.debug("WEEKS4: ${cal.get(Calendar.WEEK_OF_YEAR)}")
+        Date hoy = cal.time
+        log.debug("HOY3: ${cal.time}")
+
+
+        return [publicacion: publicacion, articulos: resultado, publicaciones: publicaciones, leccion: leccion1, hoy: hoy]
     }
 
     def leccion(String anio, String trimestre, String leccion, String dia) {

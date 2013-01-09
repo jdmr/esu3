@@ -15,7 +15,9 @@
             <div class="span6">
                 <g:if test="${leccion}">
                     <h2><g:link mapping="estudia" params="[anio:leccion.anio, trimestre:leccion.trimestre, leccion:leccion.leccion, dia:leccion.dia]">${leccion.titulo}</g:link></h2>
+                    <h4><g:formatDate date="${hoy}" format="EEEE dd/MMM/yyyy" locale="es" /></h4>
                     <p>${leccion.descripcion}</p>
+                    <p><a href="${createLink(mapping: 'estudia', params: [anio:leccion.anio, trimestre: leccion.trimestre, leccion: leccion.leccion, dia: leccion.dia])}" class="btn btn-primary btn-large"><g:message code="estudia.label"/></a></p>
                 </g:if>
             </div>
         </div>
@@ -31,14 +33,14 @@
                 <g:each in="${dialoga}" var="publicacion">
                     <h2><g:link mapping="dialoga" params="[anio:publicacion.anio, trimestre:publicacion.trimestre, leccion:publicacion.leccion, tema:publicacion.tema]">${publicacion.titulo}</g:link></h2>
                     <h4>Por ${publicacion.autor.nombreCompleto}</h4>
-                    <p>${publicacion.descripcion}</p>
+                    <p>${publicacion.descripcion} <a href="${createLink(mapping: 'dialoga', params: [anio:publicacion.anio, trimestre: publicacion.trimestre, leccion: publicacion.leccion, tema:publicacion.tema])}"><g:message code="leer.mas.label"/></a></p>
                 </g:each>
             </div>
             <div class="span6">
                 <g:each in="${comunica}" var="publicacion">
                     <h2><g:link mapping="comunica" params="[anio:publicacion.anio, trimestre:publicacion.trimestre, leccion:publicacion.leccion, tema:publicacion.tema]">${publicacion.titulo}</g:link></h2>
                     <h4>Por ${publicacion.autor.nombreCompleto}</h4>
-                    <p>${publicacion.descripcion}</p>
+                    <p>${publicacion.descripcion} <a href="${createLink(mapping: 'comunica', params: [anio:publicacion.anio, trimestre: publicacion.trimestre, leccion: publicacion.leccion, tema:publicacion.tema])}"><g:message code="leer.mas.label"/></a></p>
                 </g:each>
             </div>
         </div>

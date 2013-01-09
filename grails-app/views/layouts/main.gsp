@@ -39,7 +39,7 @@
                         <li <g:if test="${request.getRequestURI().startsWith("/esu/inicio") || request.getRequestURI().startsWith("/inicio")}">class="active"</g:if>><a href="${createLink(controller:'inicio')}"><g:message code="inicio.label" /></a></li>
                         <li <g:if test="${request.getRequestURI().startsWith("/esu/estudia") || request.getRequestURI().startsWith("/estudia")}">class="active"</g:if>><a href="${createLink(controller:'estudia')}"><g:message code="estudia.label" /></a></li>
                         <li <g:if test="${request.getRequestURI().startsWith("/esu/profundiza") || request.getRequestURI().startsWith("/profundiza")}">class="active"</g:if>><a href="${createLink(controller:'profundiza')}"><g:message code="dialoga.label" /></a></li>
-                        <li <g:if test="${request.getRequestURI().startsWith("/esu/comunica") || request.getRequestURI().startsWith("/comunica")}">class="active"</g:if>><a href="${createLink(controller:'comparte')}"><g:message code="comunica.label" /></a></li>
+                        <li <g:if test="${request.getRequestURI().startsWith("/esu/comparte") || request.getRequestURI().startsWith("/comparte")}">class="active"</g:if>><a href="${createLink(controller:'comparte')}"><g:message code="comunica.label" /></a></li>
                         <li <g:if test="${request.getRequestURI().startsWith("/esu/conocenos") || request.getRequestURI().startsWith("/conocenos")}">class="active"</g:if>><a href="${createLink(controller:'conocenos')}"><g:message code="conocenos.label" /></a></li>
                     </ul>
                 </div>
