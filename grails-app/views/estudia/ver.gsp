@@ -137,16 +137,6 @@
 
                 });
 
-                console.log("Cambiando ancho de iframe");
-                container_width = $('#comentarios').width();
-                console.log("width:"+container_width);
-                $('iframe').each(function() {
-                    console.log('iframe: '+$(this).attr('id'))
-                    fb_style = $(this).attr('style').replace(/width:\s*\d+px/i, 'width: ' + container_width + 'px');
-                    $(this).attr('style', fb_style);
-                });
-                console.log("listo! ahora debe ser de "+container_width);
-
             });
 
             function buscaContenidoVersiculo(data) {
