@@ -45,6 +45,13 @@ body > .footer {
     font-weight: bold;
 }
 
+.fb-comments span {
+    width: 100% !important;
+}
+.fb-comments iframe {
+    width: 100% !important;
+}
+
 /* Desktop large
 ------------------------- */
 @media (min-width: 1200px) {

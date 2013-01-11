@@ -4,6 +4,12 @@
 		<meta name="layout" content="main"/>
 		<title><g:message code="estudia.label" /></title>
         <r:require modules="bootstrap,bootstrap-responsive-css,modernizr,jquery-ui" />
+        <meta property="fb:app_id" content="209484445730986">
+        <meta property="fb:admins" content="jdmendozar@gmail.com"/>
+        <meta property="og:title" content="Estudia"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:site_name" content="Escuela Sabática Universitaria"/>
+        <meta property="og:image" content="http://escuelasabaticauniversitaria.org/images/logo.jpg">
 	</head>
 	<body>
     <div id="fb-root"></div>
@@ -36,8 +42,8 @@
                         </div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span12">
-                            <div class="fb-comments" data-href="${urlString}#comentarios" data-width="span12" data-num-posts="10"></div>
+                        <div id="comentarios" class="span12">
+                            <div class="fb-comments" data-href="${urlString}#comentarios" data-width="500" data-num-posts="10"></div>
                         </div>
                     </div>
                 </div>
@@ -62,6 +68,7 @@
         </g:if>
         <r:script>
             $(function() {
+
                 $('div#fechaNavega').datepicker({
                     altField:"input#fechaNavegaTxt",
                     altFormat:"dd/mm/yy",
@@ -129,6 +136,17 @@
                     });
 
                 });
+
+                console.log("Cambiando ancho de iframe");
+                container_width = $('#comentarios').width();
+                console.log("width:"+container_width);
+                $('iframe').each(function() {
+                    console.log('iframe: '+$(this).attr('id'))
+                    fb_style = $(this).attr('style').replace(/width:\s*\d+px/i, 'width: ' + container_width + 'px');
+                    $(this).attr('style', fb_style);
+                });
+                console.log("listo! ahora debe ser de "+container_width);
+
             });
 
             function buscaContenidoVersiculo(data) {
