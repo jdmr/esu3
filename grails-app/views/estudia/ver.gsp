@@ -43,7 +43,16 @@
                     </div>
                     <div class="row-fluid">
                         <div id="comentarios" class="span12">
-                            <div class="fb-comments" data-href="${urlString}#comentarios" data-width="500" data-num-posts="10"></div>
+                            <!-- AddThis Button BEGIN -->
+                            <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                            </div>
+                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d8a78014d97ad87"></script>
+                            <!-- AddThis Button END -->
+                            <div class="fb-comments" data-href="${urlString}#comentarios" data-width="700" data-num-posts="10"></div>
                         </div>
                     </div>
                 </div>

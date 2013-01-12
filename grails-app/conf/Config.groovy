@@ -121,21 +121,6 @@ grails {
         props = ["mail.debug":"false"]
     }
 }
-grails.gorm.default.mapping = {
-    id generator:'identity'
-}
-
-grails {
-    gorm {
-        failOnError = true
-    }
-    mail {
-        host = "198.136.234.242"
-        port = 25
-        username = "forms@swau.edu"
-        props = ["mail.debug":"false"]
-    }
-}
 
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'esu.Usuario'

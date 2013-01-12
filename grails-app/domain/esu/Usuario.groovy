@@ -55,4 +55,8 @@ class Usuario implements Serializable {
     String getNombreCompleto() {
         return "$nombre $apellido"
     }
+
+    String toString() {
+        return username
+    }
 }

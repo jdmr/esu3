@@ -55,8 +55,20 @@
       <div class="footer" role="contentinfo">
           <div class="container">
               <div class="row">
-                  <div class="span12">
-                      <p>&copy; 2012 Universidad de Montemorelos</p>
+                  <div class="span5">
+                      <h4><a href="${createLink(controller: 'conocenos')}">Acerca de Escuela Sabática Universitaria</a></h4>
+                      <p><a href="${createLink(controller: 'inicio')}">Inicio</a></p>
+                      <p><a href="${createLink(controller: 'estudia')}">Estudia</a></p>
+                      <p><a href="${createLink(controller: 'profundiza')}">Profundiza</a></p>
+                      <p><a href="${createLink(controller: 'comparte')}">Comparte</a></p>
+                  </div>
+                  <div class="span2" style="text-align: center;">
+                      <h4>Redes Sociales</h4>
+                      <p><a href="${createLink(uri: 'http://www.facebook.com/EscuelaSabaticaUniversitaria')}" target="_blank">Facebook</a></p>
+                      <p><a href="${createLink(uri: 'http://twitter.com/esuniversitaria')}" target="_blank">Twitter</a></p>
+                  </div>
+                  <div class="span5" style="text-align: right;">
+                      <h4>Powered by <a href="www.um.edu.mx" target="_blank">Universidad de Montemorelos</a></h4>
                   </div>
               </div>
           </div>
