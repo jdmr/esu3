@@ -12,7 +12,7 @@
         <meta property="og:image" content="http://escuelasabaticauniversitaria.org/images/logo.jpg">
 	</head>
 	<body>
-    <div id="fb-root"></div>
+        <div id="fb-root"></div>
         <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -65,12 +65,12 @@
                     <g:each in="${dialoga}" var="otro">
                         <h3><g:link mapping="dialoga" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${otro.titulo}</g:link></h3>
                         <h5>Por ${otro.autor.nombreCompleto}</h5>
-                        ${otro.descripcion}
+                        ${otro.descripcion} <a href="${createLink(mapping: 'dialoga', params: [anio:otro.anio, trimestre: otro.trimestre, leccion: otro.leccion, tema:otro.tema])}"><g:message code="leer.mas.label"/></a>
                     </g:each>
                     <g:each in="${comunica}" var="otro">
                         <h3><g:link mapping="comunica" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${otro.titulo}</g:link></h3>
                         <h5>Por ${otro.autor.nombreCompleto}</h5>
-                        ${otro.descripcion}
+                        ${otro.descripcion} <a href="${createLink(mapping: 'comunica', params: [anio:otro.anio, trimestre: otro.trimestre, leccion: otro.leccion, tema:otro.tema])}"><g:message code="leer.mas.label"/></a>
                     </g:each>
                 </div>
             </div>

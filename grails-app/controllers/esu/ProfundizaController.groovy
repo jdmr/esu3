@@ -27,9 +27,11 @@ class ProfundizaController {
             session.leccion = params.leccion
             session.dia = inicioService.obtieneDia(new GregorianCalendar().get(Calendar.DAY_OF_WEEK))
         }
-        log.debug("DIA: ${session.dia}")
         def resultado = articuloService.tema('dialoga', params.anio, params.trimestre, params.leccion, params.tema, session.dia)
-        log.debug("RESULTADO $resultado")
+
+        String urlString = /http:\/\/escuelasabaticauniversitaria.org\/profundiza\/${params.anio}\/${params.trimestre}\/${params.leccion}\/${params.tema}/
+        resultado.put('urlString', urlString)
+
         return resultado
     }
 }

@@ -27,6 +27,10 @@ class ComparteController {
             session.dia = inicioService.obtieneDia(new GregorianCalendar().get(Calendar.DAY_OF_WEEK))
         }
         def resultado = articuloService.tema('comunica', params.anio, params.trimestre, params.leccion, params.tema, session.dia)
+
+        String urlString = /http:\/\/escuelasabaticauniversitaria.org\/comunica\/${params.anio}\/${params.trimestre}\/${params.leccion}\/${params.tema}/
+        resultado.put('urlString', urlString)
+
         return resultado
     }
 
