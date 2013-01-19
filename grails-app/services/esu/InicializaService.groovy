@@ -1,6 +1,6 @@
 package esu
 
-import org.springframework.web.util.HtmlUtils
+import groovy.sql.Sql
 
 import java.sql.Connection
 import java.sql.DriverManager
@@ -11,6 +11,7 @@ class InicializaService {
 
     def editores() {
         log.info("Buscando editores")
+        Sql sql = Sql.newInstance("jdbc:postgresql:lportal","swau","5u4u")
         Map<String, String> usuarios = [:]
         Connection src
         Statement stmt
@@ -19,7 +20,7 @@ class InicializaService {
         ResultSet rs2
         src = DriverManager.getConnection("jdbc:postgresql:lportal","swau","5u4u")
         stmt = src.createStatement()
-        rs = stmt.executeQuery("select screenname, emailaddress, firstname, middlename, lastname, createdate, password_ from user_, users_usergroups where user_.userid = users_usergroups.userid and users_usergroups.usergroupid = 27943")
+        rs = stmt.executeQuery("select screenname, emailaddress, firstname, middlename, lastname, createdate, password_, user_.userid from user_, users_usergroups where user_.userid = users_usergroups.userid and users_usergroups.usergroupid = 27943")
         while(rs.next()) {
             Usuario usuario = new Usuario(
                     username: rs.getString('emailaddress')
@@ -28,7 +29,13 @@ class InicializaService {
                     , apellido: rs.getString('lastname')
                     , dateCreated: rs.getTimestamp('createdate')
             ).save()
-            usuarios."${rs.getString('screenname')}" = rs.getString('emailaddress')
+            usuarios."${rs.getString('screenname')}" = usuario.username
+
+            Perfil perfil = new Perfil(usuario: usuario)
+            sql.eachRow("select data_ from expandovalue where columnid = 16203 and classpk = ${rs.getLong('userid')}") {
+                perfil.texto = it.data_
+            }
+            perfil.save()
         }
 
         List<Trimestre> lista = Trimestre.list()
