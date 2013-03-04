@@ -20,6 +20,7 @@ class BibliaController {
             id = key.id
             break;
         }
+        log.debug("redirect: 'vers', $id")
         redirect(action: 'vers', id: id)
     }
 

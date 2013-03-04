@@ -1,54 +1,120 @@
 package esu
 
+import org.springframework.dao.DataIntegrityViolationException
+
 class UsuarioController {
 
-    static defaultAction = 'lista'
+    static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']
 
-    def usuarioService
-
-    def lista() {
-        return usuarioService.lista(params)
+    def index() {
+        redirect action: 'list', params: params
     }
 
-    def ver() {
-        log.debug("Params: ${params}")
-        def usuario = usuarioService.obtiene(params.id)
-        return [usuario: usuario]
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        [usuarioInstanceList: Usuario.list(params), usuarioInstanceTotal: Usuario.count()]
     }
 
-    def username() {
-        def usuario = usuarioService.obtienePorUsername(params.id)
-        render (view: 'ver', model: [usuario: usuario])
+    def create() {
+		switch (request.method) {
+		case 'GET':
+        	[usuarioInstance: new Usuario(params)]
+			break
+		case 'POST':
+	        def usuarioInstance = new Usuario(params)
+	        if (!usuarioInstance.save(flush: true)) {
+	            render view: 'create', model: [usuarioInstance: usuarioInstance]
+	            return
+	        }
+
+            for(roleId in params.authorities) {
+                Rol rol = Rol.get(roleId)
+                UsuarioRol.create(usuarioInstance, rol)
+            }
+
+            flash.message = message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])
+	        redirect action: 'show', id: usuarioInstance.id
+			break
+		}
     }
 
-    def nuevo() {
-        log.debug("Nuevo usuario")
-        def roleMap = obtieneRoles(null)
-        Usuario usuario = new Usuario()
-        log.debug("RoleMap: $roleMap")
-        return [usuario: usuario, roles: roleMap]
-    }
-
-    def crea() {
-        Usuario usuario = new Usuario(params)
-
-    }
-
-    def obtieneRoles = { usuario ->
-        log.debug("Obteniendo roles")
-        List roles = Rol.list()
-        log.debug("Roles $roles")
-        roles.sort { r1, r2 ->
-            r1.authority <=> r2.authority
+    def show() {
+        def usuarioInstance = Usuario.get(params.id)
+        if (!usuarioInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])
+            redirect action: 'list'
+            return
         }
-        Set userRoleNames = []
-        for (role in usuario?.authorities) {
-            userRoleNames << role.authority
+
+        [usuarioInstance: usuarioInstance]
+    }
+
+    def edit() {
+		switch (request.method) {
+		case 'GET':
+	        def usuarioInstance = Usuario.get(params.id)
+	        if (!usuarioInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])
+	            redirect action: 'list'
+	            return
+	        }
+
+	        [usuarioInstance: usuarioInstance]
+			break
+		case 'POST':
+	        def usuarioInstance = Usuario.get(params.id)
+	        if (!usuarioInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])
+	            redirect action: 'list'
+	            return
+	        }
+
+	        if (params.version) {
+	            def version = params.version.toLong()
+	            if (usuarioInstance.version > version) {
+	                usuarioInstance.errors.rejectValue('version', 'default.optimistic.locking.failure',
+	                          [message(code: 'usuario.label', default: 'Usuario')] as Object[],
+	                          "Another user has updated this Usuario while you were editing")
+	                render view: 'edit', model: [usuarioInstance: usuarioInstance]
+	                return
+	            }
+	        }
+
+	        usuarioInstance.properties = params
+
+	        if (!usuarioInstance.save(flush: true)) {
+	            render view: 'edit', model: [usuarioInstance: usuarioInstance]
+	            return
+	        }
+
+            UsuarioRol.removeAll(usuarioInstance)
+            for(roleId in params.authorities) {
+                Rol rol = Rol.get(roleId)
+                UsuarioRol.create(usuarioInstance, rol)
+            }
+
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])
+	        redirect action: 'show', id: usuarioInstance.id
+			break
+		}
+    }
+
+    def delete() {
+        def usuarioInstance = Usuario.get(params.id)
+        if (!usuarioInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])
+            redirect action: 'list'
+            return
         }
-        LinkedHashMap<Rol, Boolean> roleMap = [:]
-        for (role in roles) {
-            roleMap[(role)] = userRoleNames.contains(role.authority)
+
+        try {
+            usuarioInstance.delete(flush: true)
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])
+            redirect action: 'list'
         }
-        return roleMap
+        catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])
+            redirect action: 'show', id: params.id
+        }
     }
 }

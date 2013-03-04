@@ -91,6 +91,17 @@
 							<dd><g:fieldValue bean="${articuloInstance}" field="vistas"/></dd>
 						
 					</g:if>
+
+                    <g:if test="${publicaciones}">
+                        <dt><g:message code="publicacion.lista.label" default="Publicaciones" /></dt>
+                        <dd>
+                            <ul>
+                                <g:each in="${publicaciones}" var="publicacion">
+                                    <li>${publicacion.anio} ${publicacion.trimestre} ${publicacion.leccion} ${publicacion.tipo} ${publicacion.dia} ${publicacion.tema} <a href="${createLink(action:'eliminaPublicacion', id:publicacion.id)}" class="btn btn-danger"><i class="icon-remove icon-white"></i> <g:message code="eliminar.label" default="Eliminar" /></a> </li>
+                                </g:each>
+                            </ul>
+                        </dd>
+                    </g:if>
 				
 				</dl>
 
@@ -105,6 +116,10 @@
 							<i class="icon-trash icon-white"></i>
 							<g:message code="default.button.delete.label" default="Delete" />
 						</button>
+                        <g:link class="btn btn-primary" action="nuevaPublicacion" id="${articuloInstance?.id}">
+                            <i class="icon-plus icon-white"></i>
+                            <g:message code="nueva.publicacion.label" default="Nueva Publicación" />
+                        </g:link>
 					</div>
 				</g:form>
 

@@ -127,6 +127,12 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'esu.Usuario'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'esu.UsuarioRol'
 grails.plugins.springsecurity.authority.className = 'esu.Rol'
 
+grails.plugins.springsecurity.roleHierarchy = '''
+   ROLE_ADMIN  > ROLE_EDITOR
+   ROLE_EDITOR > ROLE_AUTOR
+   ROLE_AUTOR  > ROLE_USER
+'''
+
 ckeditor {
     config = "/js/myckconfig.js"
     skipAllowedItemsCheck = false
