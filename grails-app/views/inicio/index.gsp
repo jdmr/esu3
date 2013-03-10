@@ -3,7 +3,6 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title><g:message code="home.label" /></title>
-        <r:require modules="bootstrap,bootstrap-responsive-css,modernizr" />
 	</head>
 	<body>
         <div class="row">

@@ -6,6 +6,8 @@ class Trimestre implements Serializable {
     Date termina
     Boolean publicado = true
 
+    static searchable = true
+
     static constraints = {
         nombre size: 6..6, blank: false
     }

@@ -2,7 +2,6 @@
 <head>
 	<meta name='layout' content='main'/>
 	<title><g:message code="springSecurity.login.title"/></title>
-    <r:require modules="bootstrap,bootstrap-responsive-css,modernizr" />
 	<style type='text/css' media='screen'>
 	#login {
 		margin: 15px 0px;

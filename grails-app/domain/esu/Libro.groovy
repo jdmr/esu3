@@ -4,6 +4,8 @@ class Libro {
     String nombre
     Integer capitulos
 
+    static searchable = true
+
     static constraints = {
         nombre blank: false, unique: true
     }

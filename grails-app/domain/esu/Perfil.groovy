@@ -8,6 +8,8 @@ class Perfil implements Serializable {
     byte[] archivo
     List articulos = []
 
+    static searchable = true
+
     static belongsTo = [usuario: Usuario]
 
     static transients = ['articulos']

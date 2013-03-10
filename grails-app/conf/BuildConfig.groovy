@@ -1,9 +1,9 @@
-grails.servlet.version = "3.0" // Change depending on target container compliance (2.5 or 3.0)
+grails.servlet.version = "2.5" // Change depending on target container compliance (2.5 or 3.0)
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
-grails.project.target.level = 1.7
-grails.project.source.level = 1.7
+grails.project.target.level = 1.6
+grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 // uncomment (and adjust settings) to fork the JVM to isolate classpaths
@@ -49,8 +49,8 @@ grails.project.dependency.resolution = {
     plugins {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.8.3"
-        runtime ":resources:1.1.6"
-        runtime ":twitter-bootstrap:2.2.2"
+        runtime ":resources:1.2.RC2"
+        runtime ":twitter-bootstrap:2.3.0"
         runtime ":modernizr:2.6.2"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
@@ -68,6 +68,7 @@ grails.project.dependency.resolution = {
         compile ":webxml:1.4.1"
         compile ":ckeditor:3.6.4.0"
         compile ":jquery-ui:1.8.24"
+        compile ":searchable:0.6.4"
 
     }
 }

@@ -3,7 +3,7 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title><g:message code="estudia.label" /></title>
-        <r:require modules="bootstrap,bootstrap-responsive-css,modernizr,jquery-ui" />
+        <r:require modules="jquery-ui" />
         <meta property="fb:app_id" content="209484445730986">
         <meta property="fb:admins" content="jdmendozar@gmail.com"/>
         <meta property="og:title" content="Estudia"/>

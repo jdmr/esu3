@@ -6,7 +6,6 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'usuario.label', default: 'Usuario')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
-        <r:require modules="bootstrap,bootstrap-responsive-css,modernizr" />
 	</head>
 	<body>
 		<div class="row-fluid">

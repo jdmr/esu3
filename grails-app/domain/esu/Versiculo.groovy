@@ -10,6 +10,8 @@ class Versiculo {
 
     static transients = ['nombre']
 
+    static searchable = true
+
     static constraints = {
     }
 

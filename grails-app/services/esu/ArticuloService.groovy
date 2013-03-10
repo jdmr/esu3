@@ -162,4 +162,8 @@ class ArticuloService {
         }
     }
 
+    def nuevaPublicacion() {
+
+    }
+
 }

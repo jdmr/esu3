@@ -10,6 +10,8 @@ class Articulo implements Serializable {
 
     static belongsTo = [autor: Usuario]
 
+    static searchable = true
+
     static constraints = {
         titulo blank: false
         descripcion nullable: true, maxSize: 10000

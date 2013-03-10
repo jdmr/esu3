@@ -68,8 +68,8 @@ grails.plugins.twitterbootstrap.fixtaglib = true
 environments {
     development {
         grails.logging.jul.usebridge = true
-        grails.resources.debug = true
-        grails.gsp.enable.reload = true
+//        grails.resources.debug = true
+//        grails.gsp.enable.reload = true
     }
     production {
         grails.logging.jul.usebridge = false

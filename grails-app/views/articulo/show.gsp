@@ -4,7 +4,6 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-        <r:require modules="bootstrap,bootstrap-responsive-css,modernizr,jquery-ui" />
 		<g:set var="entityName" value="${message(code: 'articulo.label', default: 'Articulo')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
