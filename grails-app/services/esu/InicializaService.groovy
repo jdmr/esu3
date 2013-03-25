@@ -123,6 +123,11 @@ class InicializaService {
                                 contenido = contenido.replaceAll(/&amp;_biblia_WAR_esportlet_versiculo=/, '/')
                             }
 
+                            if (contenido.contains('<a class="importante"')) {
+                                log.debug("ELIMINANDO LIGAS A FOROS");
+                                contenido = contenido.replaceAll(/<a class+=+.importante\b[^>]*>(.*?)<\/a>/,'');
+                            }
+
                             Articulo articulo = new Articulo(
                                     titulo: titulo
                                     , contenido: contenido
