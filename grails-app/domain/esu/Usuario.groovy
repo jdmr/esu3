@@ -17,6 +17,8 @@ class Usuario implements Serializable {
     Integer articulos = 0
     Integer publicaciones = 0
 
+    static searchable = true
+
     static constraints = {
         username blank: false, unique: true, email: true
         password blank: false

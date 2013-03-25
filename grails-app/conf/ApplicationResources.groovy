@@ -4,7 +4,7 @@ modules = {
     }
 
     base {
-        dependsOn("jquery,bootstrap,bootstrap-responsive-css,modernizr")
+        dependsOn("bootstrap,bootstrap-responsive-css,modernizr")
         resource url: 'css/app.css'
     }
 }

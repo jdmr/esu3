@@ -162,8 +162,8 @@ class ArticuloService {
         }
     }
 
-    def nuevaPublicacion() {
-
+    def obtienePorId(id) {
+        Publicacion publicacion = Publicacion.find("from Publicacion where es.id = :articuloId",[articuloId: id])
+        return publicacion
     }
-
 }

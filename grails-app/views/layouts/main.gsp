@@ -11,8 +11,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
-		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">'
-        <r:require module="base" />
+		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
+        <r:require modules="base" />
 		<r:layoutResources />
 		<g:layoutHead/>
 	</head>
@@ -50,11 +50,11 @@
                         <sec:ifLoggedIn>
                             <li><a href="${createLink(uri:'/logout')}"><g:message code="salir.label" /></a></li>
                         </sec:ifLoggedIn>
-                        <sec:ifNotLoggedIn>
-                            <li><a href="${createLink(uri:'/login/auth')}"><g:message code="entrar.label" /></a></li>
-                        </sec:ifNotLoggedIn>
                     </ul>
                 </div>
+                <g:form controller="buscar" action="articulo" method="get" class="navbar-search pull-right">
+                    <input type="text" id="filtro" name="filtro" class="search-query" placeholder="<g:message code='buscar.label' />" />
+                </g:form>
             </div>
         </div>
       </div>
@@ -81,6 +81,9 @@
                   </div>
                   <div class="span5" style="text-align: right;">
                       <h4>Powered by <a href="www.um.edu.mx" target="_blank">Universidad de Montemorelos</a></h4>
+                      <sec:ifNotLoggedIn>
+                          <a href="${createLink(uri:'/login/auth')}"><i class="icon-cog"></i></a>
+                      </sec:ifNotLoggedIn>
                   </div>
               </div>
           </div>
