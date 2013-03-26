@@ -10,6 +10,9 @@
                 <g:if test="${video}">
                     <iframe src="${video.contenido}" width="100%" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                 </g:if>
+                <g:else>
+                    <img src="${resource(dir: "images", file: "home3.jpg")}" alt="EscuelaSabaticaUniversitaria.ORG" />
+                </g:else>
             </div>
             <div class="span6">
                 <g:if test="${leccion}">

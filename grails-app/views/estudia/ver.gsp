@@ -20,41 +20,42 @@
             js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=209484445730986";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        <g:if test="${publicacion}">
             <div class="row">
                 <div class="span8">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <blockquote>
-                                <p>${versiculo.contenido}</p>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span3"><g:link mapping="estudia" params="[anio:ayer.anio, trimestre:ayer.trimestre, leccion:ayer.leccion, dia:ayer.dia]"><i class="icon-chevron-left"></i> Anterior</g:link></div>
-                        <div class="span6" style="text-align: center;"><g:formatDate date="${hoy}" format="EEEE dd/MMM/yyyy" locale="es" /></div>
-                        <div class="span3" style="text-align: right;"><g:link mapping="estudia" params="[anio:manana.anio, trimestre:manana.trimestre, leccion:manana.leccion, dia:manana.dia]">Siguiente <i class="icon-chevron-right"></i></g:link></div>
-                    </div>
-                    <div class="row-fluid leccion">
-                        <div class="span12">
-                            <h1 style="text-align: center;">${publicacion.titulo}</h1>
-                            ${publicacion.contenido}
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div id="comentarios" class="span12">
-                            <!-- AddThis Button BEGIN -->
-                            <div class="addthis_toolbox addthis_default_style ">
-                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                                <a class="addthis_button_tweet"></a>
-                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-                                <a class="addthis_counter addthis_pill_style"></a>
+                    <g:if test="${publicacion}">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <blockquote>
+                                    <p>${versiculo.contenido}</p>
+                                </blockquote>
                             </div>
-                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d8a78014d97ad87"></script>
-                            <!-- AddThis Button END -->
-                            <div class="fb-comments" data-href="${urlString}#comentarios" data-width="700" data-num-posts="10"></div>
                         </div>
-                    </div>
+                        <div class="row-fluid">
+                            <div class="span3"><g:link mapping="estudia" params="[anio:ayer.anio, trimestre:ayer.trimestre, leccion:ayer.leccion, dia:ayer.dia]"><i class="icon-chevron-left"></i> Anterior</g:link></div>
+                            <div class="span6" style="text-align: center;"><g:formatDate date="${hoy}" format="EEEE dd/MMM/yyyy" locale="es" /></div>
+                            <div class="span3" style="text-align: right;"><g:link mapping="estudia" params="[anio:manana.anio, trimestre:manana.trimestre, leccion:manana.leccion, dia:manana.dia]">Siguiente <i class="icon-chevron-right"></i></g:link></div>
+                        </div>
+                        <div class="row-fluid leccion">
+                            <div class="span12">
+                                <h1 style="text-align: center;">${publicacion.titulo}</h1>
+                                ${publicacion.contenido}
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div id="comentarios" class="span12">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                    <a class="addthis_button_tweet"></a>
+                                    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                    <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d8a78014d97ad87"></script>
+                                <!-- AddThis Button END -->
+                                <div class="fb-comments" data-href="${urlString}#comentarios" data-width="700" data-num-posts="10"></div>
+                            </div>
+                        </div>
+                    </g:if>
                 </div>
                 <div class="span4">
                     <form id="navegaForm" name="navegaForm" action="${createLink(action: 'buscaFecha')}" method="post">
@@ -74,7 +75,6 @@
                     </g:each>
                 </div>
             </div>
-        </g:if>
         <r:script>
             $(function() {
 
