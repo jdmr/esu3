@@ -45,6 +45,18 @@ body > .footer {
     width: 100% !important;
 }
 
+.leftfooter {
+    text-align: left;
+}
+
+.centerfooter {
+    text-align: center;
+}
+
+.rightfooter {
+    text-align: right;
+}
+
 /* Desktop large
 ------------------------- */
 @media (min-width: 1200px) {
@@ -81,10 +93,14 @@ body > .footer {
         font-size: 1.5em;
     }
 
-    .brand > img {
-        height: 60px;
-        padding-left: 20px;
+    .leftfooter {
+        text-align: center;
     }
+
+    .rightfooter {
+        text-align: center;
+    }
+
 }
 
 /* Landscape phones
@@ -99,9 +115,13 @@ body > .footer {
         font-size: 1.5em;
     }
 
-    .brand > img {
-        height: 30px;
-        padding-left: 20px;
+    .leftfooter {
+        text-align: center;
     }
+
+    .rightfooter {
+        text-align: center;
+    }
+
 }
 

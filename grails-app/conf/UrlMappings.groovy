@@ -22,6 +22,8 @@ class UrlMappings {
 
         "/biblia/vers/$id"(controller: 'biblia', action: 'vers')
 
+        "/rss"(controller: 'inicio', action:'rss')
+
         "/"(controller: "inicio")
 
         "500"(view: '/error')

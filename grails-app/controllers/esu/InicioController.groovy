@@ -24,4 +24,36 @@ class InicioController {
         def resultado = inicioService.inicio(params.anio, params.trimestre, params.leccion, params.dia)
         render(view: 'index', model: resultado)
     }
+
+    def rss() {
+        def resultado = inicioService.inicio(params)
+        def entradas = inicioService.inicio(resultado.anio, resultado.trimestre, resultado.leccion, resultado.dia)
+        render(feedType:"rss") {
+            title = "EscuelaSabaticaUniversitaria.ORG"
+            link = "http://escuelasabaticaunivarsitaria.org/feed"
+            description = "Lección diaria de la Escuela Sabática de la Iglesia Adventista del Séptimo Día y Temas Semanales basados en las lecciones."
+            entry("Versículo de Memoria") {
+                link = "${createLink(mapping: 'estudia', absolute: true, params: [anio: entradas.leccion.anio, trimestre: entradas.leccion.trimestre, leccion: entradas.leccion.leccion, dia: entradas.leccion.dia])}"
+                entradas.versiculo
+            }
+            entry(entradas.leccion.titulo) {
+                link = "${createLink(mapping: 'estudia', absolute: true, params: [anio: entradas.leccion.anio, trimestre: entradas.leccion.trimestre, leccion: entradas.leccion.leccion, dia: entradas.leccion.dia])}"
+                entradas.leccion.descripcion
+            }
+            for(Publicacion publicacion in entradas.dialoga) {
+                entry(publicacion.titulo) {
+                    link = "${createLink(mapping: 'dialoga', absolute: true, params: [anio: publicacion.anio, trimestre: publicacion.trimestre, leccion: publicacion.leccion, tema: publicacion.tema])}"
+                    author = publicacion.autor
+                    publicacion.descripcion
+                }
+            }
+            for(Publicacion publicacion in entradas.comunica) {
+                entry(publicacion.titulo) {
+                    link = "${createLink(mapping: 'comunica', absolute: true, params: [anio: publicacion.anio, trimestre: publicacion.trimestre, leccion: publicacion.leccion, tema: publicacion.tema])}"
+                    author = publicacion.autor
+                    publicacion.descripcion
+                }
+            }
+        }
+    }
 }

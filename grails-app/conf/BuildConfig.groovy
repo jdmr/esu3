@@ -69,6 +69,7 @@ grails.project.dependency.resolution = {
         compile ":ckeditor:3.6.4.0"
         compile ":jquery-ui:1.8.24"
         compile ":searchable:0.6.4"
+        compile ":feeds:1.5"
 
     }
 }

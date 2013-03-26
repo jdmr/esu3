@@ -67,23 +67,25 @@
       <div class="footer" role="contentinfo">
           <div class="container">
               <div class="row">
-                  <div class="span5">
+                  <div class="span5 leftfooter">
                       <h4><a href="${createLink(controller: 'conocenos')}">Acerca de Escuela Sabática Universitaria</a></h4>
                       <p><a href="${createLink(controller: 'inicio')}">Inicio</a></p>
                       <p><a href="${createLink(controller: 'estudia')}">Estudia</a></p>
                       <p><a href="${createLink(controller: 'profundiza')}">Profundiza</a></p>
                       <p><a href="${createLink(controller: 'comparte')}">Comparte</a></p>
                   </div>
-                  <div class="span2" style="text-align: center;">
+                  <div class="span2 centerfooter">
                       <h4>Redes Sociales</h4>
                       <p><a href="${createLink(uri: 'http://www.facebook.com/EscuelaSabaticaUniversitaria')}" target="_blank">Facebook</a></p>
                       <p><a href="${createLink(uri: 'http://twitter.com/esuniversitaria')}" target="_blank">Twitter</a></p>
+                      <p><a href="${createLink(uri:'/rss')}">rss</a></p>
                   </div>
-                  <div class="span5" style="text-align: right;">
+                  <div class="span5 rightfooter">
                       <h4>Powered by <a href="www.um.edu.mx" target="_blank">Universidad de Montemorelos</a></h4>
                       <sec:ifNotLoggedIn>
                           <a href="${createLink(uri:'/login/auth')}"><i class="icon-cog"></i></a>
                       </sec:ifNotLoggedIn>
+                      <br/>
                   </div>
               </div>
           </div>
