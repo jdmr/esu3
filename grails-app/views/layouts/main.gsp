@@ -41,6 +41,9 @@
                         <li <g:if test="${request.getRequestURI().startsWith("/profundiza")}">class="active"</g:if>><a href="${createLink(controller:'profundiza')}"><g:message code="dialoga.label" /></a></li>
                         <li <g:if test="${request.getRequestURI().startsWith("/comparte")}">class="active"</g:if>><a href="${createLink(controller:'comparte')}"><g:message code="comunica.label" /></a></li>
                         <li <g:if test="${request.getRequestURI().startsWith("/conocenos")}">class="active"</g:if>><a href="${createLink(controller:'conocenos')}"><g:message code="conocenos.label" /></a></li>
+                        <sec:ifAllGranted roles="ROLE_ADMIN">
+                            <li <g:if test="${request.getRequestURI().startsWith("/trimestre")}">class="active"</g:if>><a href="${createLink(controller:'trimestre')}"><g:message code="trimestre.lista" /></a></li>
+                        </sec:ifAllGranted>
                         <sec:ifAllGranted roles="ROLE_AUTOR">
                             <li <g:if test="${request.getRequestURI().startsWith("/articulo")}">class="active"</g:if>><a href="${createLink(controller:'articulo')}"><g:message code="articulo.lista" /></a></li>
                         </sec:ifAllGranted>

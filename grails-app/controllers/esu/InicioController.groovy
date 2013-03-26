@@ -30,11 +30,11 @@ class InicioController {
         def entradas = inicioService.inicio(resultado.anio, resultado.trimestre, resultado.leccion, resultado.dia)
         render(feedType:"rss") {
             title = "EscuelaSabaticaUniversitaria.ORG"
-            link = "http://escuelasabaticaunivarsitaria.org/feed"
+            link = "${createLink(absolute: true, uri:'/rss')}"
             description = "Lección diaria de la Escuela Sabática de la Iglesia Adventista del Séptimo Día y Temas Semanales basados en las lecciones."
             entry("Versículo de Memoria") {
                 link = "${createLink(mapping: 'estudia', absolute: true, params: [anio: entradas.leccion.anio, trimestre: entradas.leccion.trimestre, leccion: entradas.leccion.leccion, dia: entradas.leccion.dia])}"
-                entradas.versiculo
+                entradas.versiculo.contenido
             }
             entry(entradas.leccion.titulo) {
                 link = "${createLink(mapping: 'estudia', absolute: true, params: [anio: entradas.leccion.anio, trimestre: entradas.leccion.trimestre, leccion: entradas.leccion.leccion, dia: entradas.leccion.dia])}"
