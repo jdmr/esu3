@@ -115,11 +115,15 @@ grails {
         failOnError = true
     }
     mail {
-        host = "198.136.234.242"
-        port = 25
-        username = "forms@swau.edu"
-        props = ["mail.debug":"false"]
-    }
+     host = "smtp.gmail.com"
+     port = 465
+     username = "youracount@gmail.com"
+     password = "yourpassword"
+     props = ["mail.smtp.auth":"true",
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
+   }
 }
 
 // Added by the Spring Security Core plugin:
