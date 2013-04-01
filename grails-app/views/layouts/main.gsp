@@ -94,6 +94,12 @@
           </div>
       </div>
       <g:javascript library="application"/>
+      <r:script>
+          var _gaq=[['_setAccount','UA-19803340-3'],['_trackPageview']];
+          (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+          g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+          s.parentNode.insertBefore(g,s)}(document,'script'));
+      </r:script>
       <r:layoutResources />
 	</body>
 </html>
