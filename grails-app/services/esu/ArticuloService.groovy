@@ -97,7 +97,7 @@ class ArticuloService {
             cal.set(Calendar.DAY_OF_WEEK, obtieneDia(dia))
             log.debug("HOY2: ${cal.time} : ${leccion}")
             int weeks = ((Long)nf.parse(leccion.substring(1))).intValue()
-            if (dia.equals('sabado')) {
+            if (dia.equals('domingo')) {
                 weeks--
             }
             log.debug("WEEKS3: ${cal.get(Calendar.WEEK_OF_YEAR)} + $weeks")
