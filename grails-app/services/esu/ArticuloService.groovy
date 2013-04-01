@@ -51,7 +51,7 @@ class ArticuloService {
         NumberFormat nf = NumberFormat.instance
         Trimestre t = Trimestre.find("from Trimestre where nombre = :nombre",[nombre:"${anio}${trimestre}"])
         log.debug("TRIMESTRE: $t")
-        Calendar cal = new GregorianCalendar()
+        Calendar cal = new GregorianCalendar(Locale.ENGLISH)
         cal.time = t.inicia
         log.debug("HOY1: ${cal.time}")
         cal.add(Calendar.SECOND, 1)
@@ -90,14 +90,14 @@ class ArticuloService {
             NumberFormat nf = NumberFormat.instance
             Trimestre t = Trimestre.find("from Trimestre where nombre = :nombre",[nombre:"${anio}${trimestre}"])
             log.debug("TRIMESTRE: $t")
-            Calendar cal = new GregorianCalendar()
+            Calendar cal = new GregorianCalendar(Locale.ENGLISH)
             cal.time = t.inicia
             log.debug("HOY1: ${cal.time}")
             cal.add(Calendar.SECOND, 1)
             cal.set(Calendar.DAY_OF_WEEK, obtieneDia(dia))
             log.debug("HOY2: ${cal.time} : ${leccion}")
             int weeks = ((Long)nf.parse(leccion.substring(1))).intValue()
-            if (dia.equals('domingo')) {
+            if (dia.equals('sabado')) {
                 weeks--
             }
             log.debug("WEEKS3: ${cal.get(Calendar.WEEK_OF_YEAR)} + $weeks")

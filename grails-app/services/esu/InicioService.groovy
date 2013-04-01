@@ -56,7 +56,7 @@ class InicioService {
         NumberFormat nf = NumberFormat.instance
         Trimestre t = Trimestre.find("from Trimestre where nombre = :nombre",[nombre:"${anio}${trimestre}"])
         log.debug("TRIMESTRE: $t")
-        Calendar cal = new GregorianCalendar()
+        Calendar cal = new GregorianCalendar(Locale.ENGLISH)
         cal.time = t.inicia
         log.debug("HOY1: ${cal.time}")
         cal.add(Calendar.SECOND, 1)
@@ -75,7 +75,7 @@ class InicioService {
     }
 
     def inicio(params) {
-        def hoy = new GregorianCalendar()
+        def hoy = new GregorianCalendar(Locale.ENGLISH)
         return inicio(hoy)
     }
 
