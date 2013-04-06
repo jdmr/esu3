@@ -18,7 +18,7 @@
                 // init the FB JS SDK
                 FB.init({
                     appId      : '209484445730986',                    // App ID from the app dashboard
-                    channelUrl : '//escuelasabaticauniversitaria.org/channel.html', // Channel file for x-domain comms
+                    channelUrl : '//escuelasabaticauniversitaria.org/channel', // Channel file for x-domain comms
                     status     : true,                                 // Check Facebook Login status
                     xfbml      : true                                  // Look for social plugins on the page
                 });

@@ -24,7 +24,7 @@ class UrlMappings {
 
         "/rss"(controller: 'inicio', action:'rss')
 
-        "/channel.html"(controller:'inicio', action: 'channel')
+        "/channel"(controller:'inicio', action: 'channel')
 
         "/"(controller: "inicio")
 
