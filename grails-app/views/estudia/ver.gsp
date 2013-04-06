@@ -13,13 +13,28 @@
 	</head>
 	<body>
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=209484445730986";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        <script>
+            window.fbAsyncInit = function() {
+                // init the FB JS SDK
+                FB.init({
+                    appId      : '209484445730986',                    // App ID from the app dashboard
+                    channelUrl : '//escuelasabaticauniversitaria.org/channel.html', // Channel file for x-domain comms
+                    status     : true,                                 // Check Facebook Login status
+                    xfbml      : true                                  // Look for social plugins on the page
+                });
+
+                // Additional initialization code such as adding Event Listeners goes here
+            };
+
+            // Load the SDK asynchronously
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=209484445730986";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
             <div class="row">
                 <div class="span8">
                     <g:if test="${publicacion}">

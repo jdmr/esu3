@@ -24,6 +24,8 @@ class UrlMappings {
 
         "/rss"(controller: 'inicio', action:'rss')
 
+        "/channel.html"(controller:'inicio', action: 'channel')
+
         "/"(controller: "inicio")
 
         "500"(view: '/error')
