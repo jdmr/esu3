@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/esu.iml" filepath="$PROJECT_DIR$/esu.iml" />
-      <module fileurl="file://$PROJECT_DIR$/esu-grailsPlugins.iml" filepath="$PROJECT_DIR$/esu-grailsPlugins.iml" />
     </modules>
   </component>
 </project>
