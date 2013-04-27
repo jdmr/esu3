@@ -2,7 +2,12 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title><g:message code="dialoga.label" /></title>
+        <g:if test="${publicacion}">
+            <title>${publicacion.titulo}</title>
+        </g:if>
+        <g:else>
+            <title><g:message code="dialoga.label" /></title>
+        </g:else>
 	</head>
 	<body>
         <g:if test="${publicacion}">
