@@ -39,7 +39,11 @@
 				<g:if test="${flash.message}">
 				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
 				</g:if>
-				
+
+                <form id="searchForm" name="searchForm" action="${createLink(action: 'buscar')}" method="post" class="form-search">
+                    <input type="text" name="filter" id="filter" value="${params.filter}" class="input-large search-query" />
+                    <button type="submit" name="searchBtn" id="searchBtn" class="btn"><i class="icon-search"></i> Buscar Por Título</button>
+                </form>
 				<table class="table table-striped">
 					<thead>
 						<tr>

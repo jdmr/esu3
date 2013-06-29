@@ -17,8 +17,10 @@ class ArticuloController {
 
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        params.sort = 'lastUpdated'
-        params.order = 'desc'
+        if (!params.sort) {
+            params.sort = 'lastUpdated'
+            params.order = 'desc'
+        }
         [articuloInstanceList: Articulo.list(params), articuloInstanceTotal: Articulo.count()]
     }
 
@@ -184,6 +186,15 @@ class ArticuloController {
             log.error("No se pudo eliminar la publicacion ${params.id}", e)
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'publicacion.label', default: 'Publicacion'), params.id])
             redirect action: 'show', id: articulo.id
+        }
+    }
+
+    def buscar() {
+        if (params.filter) {
+            def articulos = Articulo.findAllByTituloIlike("%${params.filter}%")
+            render view: 'list', model: [articuloInstanceList: articulos, articuloInstanceTotal: articulos.size()]
+        } else {
+            redirect(action: 'list', params: params)
         }
     }
 }
