@@ -69,6 +69,11 @@
                             </g:each>
                         </ul>
                     </g:if>
+                    <g:each in="${dialoga}" var="otro">
+                        <h3><g:link mapping="dialoga" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${otro.titulo}</g:link></h3>
+                        <h5>Por ${otro.autor.nombreCompleto}</h5>
+                        ${otro.descripcion} <a href="${createLink(mapping: 'dialoga', params: [anio:otro.anio, trimestre: otro.trimestre, leccion: otro.leccion, tema:otro.tema])}"><g:message code="leer.mas.label"/></a>
+                    </g:each>
                 </div>
             </div>
         </g:if>

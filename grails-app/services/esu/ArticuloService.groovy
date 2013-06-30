@@ -12,6 +12,9 @@ class ArticuloService {
 
     def tema(String tipo, String anio, String trimestre, String leccion, String tema, String dia) {
         List<Map> articulos = []
+        List<Publicacion> dialoga
+        List<Publicacion> comunica
+
         Integer aniol = new Integer(anio)
         Publicacion publicacion = Publicacion.find("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tema = :tema and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: tipo, tema: tema])
         if (publicacion) {
@@ -51,6 +54,24 @@ class ArticuloService {
             leccion1.contenido = leccion1.es.contenido
         }
 
+        if (tipo.equals('dialoga')) {
+            comunica = Publicacion.findAll("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'comunica'])
+            for(articulo in comunica) {
+                articulo.titulo = articulo.es.titulo
+                articulo.descripcion = articulo.es.descripcion
+                articulo.contenido = articulo.es.contenido
+                articulo.autor = articulo.es.autor
+            }
+        } else if (tipo.equals('comunica')) {
+            dialoga = Publicacion.findAll("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'dialoga'])
+            for(articulo in dialoga) {
+                articulo.titulo = articulo.es.titulo
+                articulo.descripcion = articulo.es.descripcion
+                articulo.contenido = articulo.es.contenido
+                articulo.autor = articulo.es.autor
+            }
+        }
+
         log.debug("FECHAS")
         NumberFormat nf = NumberFormat.instance
         Trimestre t = Trimestre.find("from Trimestre where nombre = :nombre",[nombre:"${anio}${trimestre}"])
@@ -72,7 +93,7 @@ class ArticuloService {
         log.debug("HOY3: ${cal.time}")
 
 
-        return [publicacion: publicacion, articulos: resultado, publicaciones: publicaciones, leccion: leccion1, hoy: hoy]
+        return [publicacion: publicacion, articulos: resultado, publicaciones: publicaciones, leccion: leccion1, hoy: hoy, comunica: comunica, dialoga: dialoga]
     }
 
     def leccion(String anio, String trimestre, String leccion, String dia) {
