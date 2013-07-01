@@ -15,12 +15,13 @@ class Publicacion implements Serializable {
     String descripcion
     String contenido
     Usuario autor
+    Integer vistas
 
     static searchable = true
 
     static belongsTo = [editor: Usuario, es: Articulo, padre: Trimestre]
 
-    static transients = ['titulo', 'descripcion', 'contenido', 'autor']
+    static transients = ['titulo', 'descripcion', 'contenido', 'autor', 'vistas']
 
     static constraints = {
         anio min: 2011

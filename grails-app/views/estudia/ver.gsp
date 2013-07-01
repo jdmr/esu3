@@ -33,6 +33,11 @@
                             </div>
                         </div>
                         <div class="row-fluid">
+                            <div class="span12">
+                                ${publicacion.vistas} Visitas
+                            </div>
+                        </div>
+                        <div class="row-fluid">
                             <div id="comentarios" class="span12">
                                 <!-- AddThis Button BEGIN -->
                                 <div class="addthis_toolbox addthis_default_style ">
@@ -90,6 +95,7 @@
                     dateFormat:"dd/mm/yy",
                     defaultDate:"<g:formatDate date="${hoy}" format="dd/MM/yyyy" />",
                     firstDay: 0,
+                    showButtonPanel: true,
                     showOtherMonths: true,
                     selectOtherMonths: true,
                     minDate: "26/03/2011",

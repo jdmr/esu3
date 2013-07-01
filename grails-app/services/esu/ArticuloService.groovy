@@ -27,6 +27,8 @@ class ArticuloService {
             articulo.vistas += 1
             articulo.save()
 
+            publicacion.vistas = publicacion.es.vistas
+
             articulos = Publicacion.executeQuery("select new map(p.es.titulo as titulo, p.fecha as fecha, p.anio as anio, p.trimestre as trimestre, p.leccion as leccion, p.tema as tema, p.es.id as id, p.tipo as tipo) from Publicacion p where p.es.autor.id = :autorId and p.estatus = 'PUBLICADO'",[autorId: publicacion.es.autor.id])
         }
         Map<Long, Long> filtro = [:]
@@ -114,6 +116,8 @@ class ArticuloService {
             Articulo a = publicacion.es
             a.vistas += 1
             a.save()
+
+            publicacion.vistas = publicacion.es.vistas
 
             log.debug("FECHAS")
             NumberFormat nf = NumberFormat.instance

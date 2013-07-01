@@ -21,6 +21,11 @@
                         </div>
                     </div>
                     <div class="row-fluid">
+                        <div class="span12">
+                            ${publicacion.vistas} Visitas
+                        </div>
+                    </div>
+                    <div class="row-fluid">
                         <div id="comentarios" class="span12">
                             <!-- AddThis Button BEGIN -->
                             <div class="addthis_toolbox addthis_default_style ">
