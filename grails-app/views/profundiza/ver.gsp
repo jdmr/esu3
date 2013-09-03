@@ -12,21 +12,21 @@
 	<body>
         <g:if test="${publicacion}">
             <div class="row">
-                <div class="span8">
-                    <div class="row-fluid">
-                        <div class="span12">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-12">
                             <h1>${publicacion.titulo}</h1>
                             <h3>Por ${publicacion.autor.nombreCompleto}</h3>
                             ${publicacion.contenido}
                         </div>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span12">
+                    <div class="row">
+                        <div class="col-sm-12">
                             ${publicacion.vistas} Visitas
                         </div>
                     </div>
-                    <div class="row-fluid">
-                        <div id="comentarios" class="span12">
+                    <div class="row">
+                        <div id="comentarios" class="col-sm-12">
                             <!-- AddThis Button BEGIN -->
                             <div class="addthis_toolbox addthis_default_style ">
                                 <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="115"></a>
@@ -52,11 +52,11 @@
                                 })();
                             </script>
                             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                            <a href="http://disqus.com" class="dsq-brlink">comments powered by <col-sm- class="logo-disqus">Disqus</col-sm-></a>
                         </div>
                     </div>
                 </div>
-                <div class="span4">
+                <div class="col-sm-4">
                     <g:each in="${publicaciones}" var="otro">
                         <h3><g:link mapping="dialoga" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${otro.titulo}</g:link></h3>
                         <h5>Por ${otro.autor.nombreCompleto}</h5>

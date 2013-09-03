@@ -22,25 +22,25 @@
           <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]-->
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
+            <div class="navbar-header">
+                <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Men&uacute;</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
 
-            <div class="row">
-                <div class="span12">
-                    <a class="brand" href="${createLink(controller: 'inicio')}"><img
-                            src="${resource(dir: 'images', file: 'logo.jpg')}" alt="Escuela Sabática Universitaria"/>
-                    </a>
-                </div>
+                <a class="navbar-brand" href="${createLink(controller: 'inicio')}"><img
+                        src="${resource(dir: 'images', file: 'logo.jpg')}" alt="Escuela Sabática Universitaria"/>
+                </a>
             </div>
-
-            <div class="nav-collapse collapse">
-                <ul class="nav">
+            <div class="row">
+                <div class="col-sm-12"></div>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
                     <li <g:if test="${request.getRequestURI().startsWith("/inicio")}">class="active"</g:if>><a
                             href="${createLink(controller: 'inicio')}"><g:message code="inicio.label"/></a></li>
                     <li <g:if test="${request.getRequestURI().startsWith("/estudia")}">class="active"</g:if>><a
@@ -69,13 +69,13 @@
                         <li><a href="${createLink(uri: '/logout')}"><g:message code="salir.label"/></a></li>
                     </sec:ifLoggedIn>
                 </ul>
+                <g:form controller="buscar" action="articulo" method="get" class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="<g:message code='buscar.label'/>" id="filtro" name="filtro">
+                    </div>
+                </g:form>
             </div>
-            <g:form controller="buscar" action="articulo" method="get" class="navbar-search pull-right">
-                <input type="text" id="filtro" name="filtro" class="search-query"
-                       placeholder="<g:message code='buscar.label'/>"/>
-            </g:form>
         </div>
-    </div>
 </div>
 
 <div class="container">
@@ -87,7 +87,7 @@
 <div class="footer" role="contentinfo">
     <div class="container">
         <div class="row">
-            <div class="span5 leftfooter">
+            <div class="col-sm-5 leftfooter">
                 <h4><a href="${createLink(controller: 'conocenos')}">Acerca de Escuela Sabática Universitaria</a></h4>
 
                 <p><a href="${createLink(controller: 'inicio')}">Inicio</a></p>
@@ -99,7 +99,7 @@
                 <p><a href="${createLink(controller: 'comparte')}">Comparte</a></p>
             </div>
 
-            <div class="span2 centerfooter">
+            <div class="col-sm-2 centerfooter">
                 <h4>Redes Sociales</h4>
 
                 <p><a href="${createLink(uri: 'http://www.facebook.com/EscuelaSabaticaUniversitaria')}"
@@ -110,7 +110,7 @@
                 <p><a href="${createLink(uri: '/rss')}">rss</a></p>
             </div>
 
-            <div class="span5 rightfooter">
+            <div class="col-sm-5 rightfooter">
                 <h4>Powered by <a href="www.um.edu.mx" target="_blank">Universidad de Montemorelos</a></h4>
                 <sec:ifNotLoggedIn>
                     <a href="${createLink(uri: '/login/auth')}"><i class="icon-cog"></i></a>

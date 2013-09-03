@@ -8,29 +8,9 @@
         <ckeditor:resources/>
 	</head>
 	<body>
-		<div class="row-fluid">
+		<div class="row">
 			
-			<div class="span3">
-				<div class="well">
-					<ul class="nav nav-list">
-						<li class="nav-header">${entityName}</li>
-						<li>
-							<g:link class="list" action="list">
-								<i class="icon-list"></i>
-								<g:message code="default.list.label" args="[entityName]" />
-							</g:link>
-						</li>
-						<li class="active">
-							<g:link class="create" action="create">
-								<i class="icon-plus icon-white"></i>
-								<g:message code="default.create.label" args="[entityName]" />
-							</g:link>
-						</li>
-					</ul>
-				</div>
-			</div>
-			
-			<div class="span9">
+			<div class="col-sm-12">
 
 				<div class="page-header">
 					<h1><g:message code="publicacion.nueva.label" args="[articulo.titulo]" /> </h1>
@@ -50,44 +30,44 @@
 				</bootstrap:alert>
 				</g:hasErrors>
 
-				<fieldset>
-					<g:form class="form-horizontal" action="nuevaPublicacion" method="post" >
+					<g:form action="nuevaPublicacion" method="post" >
                         <input type="hidden" name="articuloId" value="${articulo.id}" />
-						<fieldset>
-                            <div class="row-fluid">
-                                <div class="span2">
-                                    <g:select id="anio" name="anio" from="${anios}" value="${publicacion.anio}" class="span12" />
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <g:select id="anio" name="anio" from="${anios}" value="${publicacion.anio}" class="form-control" />
                                 </div>
-                                <div class="span1">
-                                    <g:select name="trimestre" from="${publicacion.constraints.trimestre.inList}" id="trimestre" value="${publicacion.trimestre}" class="span12" />
+                                <div class="col-sm-1">
+                                    <g:select name="trimestre" from="${publicacion.constraints.trimestre.inList}" id="trimestre" value="${publicacion.trimestre}" class="form-control" />
                                 </div>
-                                <div class="span1">
-                                    <g:select name="leccion" from="${publicacion.constraints.leccion.inList}" id="leccion" value="${publicacion.leccion}" class="span12" />
+                                <div class="col-sm-1">
+                                    <g:select name="leccion" from="${publicacion.constraints.leccion.inList}" id="leccion" value="${publicacion.leccion}" class="form-control" />
                                 </div>
-                                <div class="span2">
-                                    <g:select name="tipo" from="${publicacion.constraints.tipo.inList}" id="tipo" value="${publicacion.tipo}" class="span12" />
+                                <div class="col-sm-2">
+                                    <g:select name="tipo" from="${publicacion.constraints.tipo.inList}" id="tipo" value="${publicacion.tipo}" class="form-control" />
                                 </div>
-                                <div class="span2">
-                                    <g:select name="dia" from="${publicacion.constraints.dia.inList}" id="dia" value="${publicacion.dia}" class="span12" noSelection="['':'-Día-']" />
+                                <div class="col-sm-2">
+                                    <g:select name="dia" from="${publicacion.constraints.dia.inList}" id="dia" value="${publicacion.dia}" class="form-control" noSelection="['':'-Día-']" />
                                 </div>
-                                <div class="span2">
-                                    <g:select name="tema" from="${publicacion.constraints.tema.inList}" id="tema" value="${publicacion.tema}" class="span12" noSelection="['':'-Tema-']" />
+                                <div class="col-sm-2">
+                                    <g:select name="tema" from="${publicacion.constraints.tema.inList}" id="tema" value="${publicacion.tema}" class="form-control" noSelection="['':'-Tema-']" />
                                 </div>
-                                <div class="span2">
-                                    <g:select name="estatus" from="${publicacion.constraints.estatus.inList}" id="estatus" value="${publicacion.estatus}" class="span12" />
+                                <div class="col-sm-2">
+                                    <g:select name="estatus" from="${publicacion.constraints.estatus.inList}" id="estatus" value="${publicacion.estatus}" class="form-control" />
                                 </div>
                             </div>
 
-                            <div class="form-actions">
+                            <div class="form-group" style="padding-top: 10px;">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>
 									<g:message code="default.button.create.label" default="Create" />
 								</button>
+                                <g:link class="btn btn-default" action="show" id="${articulo?.id}">
+                                    <i class="icon-remove"></i>
+                                    <g:message code="default.button.back.label" default="Back" />
+                                </g:link>
 							</div>
-						</fieldset>
 					</g:form>
-				</fieldset>
-				
+
 			</div>
 
 		</div>

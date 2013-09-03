@@ -8,29 +8,27 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="row-fluid">
+		<div class="row">
 			
-			<div class="span3">
-				<div class="well">
-					<ul class="nav nav-list">
-						<li class="nav-header">${entityName}</li>
-						<li class="active">
-							<g:link class="list" action="list">
-								<i class="icon-list icon-white"></i>
-								<g:message code="default.list.label" args="[entityName]" />
-							</g:link>
-						</li>
-						<li>
-							<g:link class="create" action="create">
-								<i class="icon-plus"></i>
-								<g:message code="default.create.label" args="[entityName]" />
-							</g:link>
-						</li>
-					</ul>
-				</div>
+			<div class="col-sm-3">
+                <ul class="nav esu-sidenav">
+                    <li class="nav-header">${entityName}</li>
+                    <li class="active">
+                        <g:link class="list" action="list">
+                            <i class="icon-list icon-white"></i>
+                            <g:message code="default.list.label" args="[entityName]" />
+                        </g:link>
+                    </li>
+                    <li>
+                        <g:link class="create" action="create">
+                            <i class="icon-plus"></i>
+                            <g:message code="default.create.label" args="[entityName]" />
+                        </g:link>
+                    </li>
+                </ul>
 			</div>
 
-			<div class="span9">
+			<div class="col-sm-9">
 				
 				<div class="page-header">
 					<h1><g:message code="default.list.label" args="[entityName]" /></h1>
@@ -40,11 +38,13 @@
 				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
 				</g:if>
 
-                <form id="searchForm" name="searchForm" action="${createLink(action: 'buscar')}" method="post" class="form-search">
-                    <input type="text" name="filter" id="filter" value="${params.filter}" class="input-large search-query" />
-                    <button type="submit" name="searchBtn" id="searchBtn" class="btn"><i class="icon-search"></i> Buscar Por Título</button>
+                <form id="searchForm" name="searchForm" action="${createLink(action: 'buscar')}" method="post" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="filter" id="filter" value="${params.filter}" class="input-large search-query" />
+                    </div>
+                    <button type="submit" name="searchBtn" id="searchBtn" class="btn btn-default"><i class="icon-search"></i> Buscar Por Título</button>
                 </form>
-				<table class="table table-striped">
+				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
 						
@@ -82,9 +82,7 @@
 					</g:each>
 					</tbody>
 				</table>
-				<div class="pagination">
-					<bootstrap:paginate total="${articuloInstanceTotal}" />
-				</div>
+                <g:paginate total="${articuloInstanceTotal}" />
 			</div>
 
 		</div>

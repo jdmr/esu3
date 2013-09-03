@@ -2,23 +2,23 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: trimestreInstance, field: 'nombre', 'error')} required">
+<div class="form-group fieldcontain ${hasErrors(bean: trimestreInstance, field: 'nombre', 'error')} required">
 	<label for="nombre">
 		<g:message code="trimestre.nombre.label" default="Nombre" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nombre" maxlength="6" required="" value="${trimestreInstance?.nombre}"/>
+	<g:textField name="nombre" maxlength="6" required="" value="${trimestreInstance?.nombre}" class="form-control" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: trimestreInstance, field: 'inicia', 'error')} required">
+<div class="form-group fieldcontain ${hasErrors(bean: trimestreInstance, field: 'inicia', 'error')} required">
 	<label for="inicia">
 		<g:message code="trimestre.inicia.label" default="Inicia" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="inicia" precision="day"  value="${trimestreInstance?.inicia}"  />
+	<g:datePicker name="inicia" precision="day"  value="${trimestreInstance?.inicia}" class="form-control" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: trimestreInstance, field: 'publicado', 'error')} ">
+<div class="form-group fieldcontain ${hasErrors(bean: trimestreInstance, field: 'publicado', 'error')} ">
 	<label for="publicado">
 		<g:message code="trimestre.publicado.label" default="Publicado" />
 		
@@ -26,11 +26,15 @@
 	<g:checkBox name="publicado" value="${trimestreInstance?.publicado}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: trimestreInstance, field: 'termina', 'error')} required">
+<div class="form-group fieldcontain ${hasErrors(bean: trimestreInstance, field: 'termina', 'error')} required">
 	<label for="termina">
 		<g:message code="trimestre.termina.label" default="Termina" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="termina" precision="day"  value="${trimestreInstance?.termina}"  />
+	<g:datePicker name="termina" precision="day"  value="${trimestreInstance?.termina}"  class="form-control" />
 </div>
-
+<r:script>
+$(function() {
+    $('#nombre').focus();
+});
+</r:script>

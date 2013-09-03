@@ -12,33 +12,33 @@
 	</head>
 	<body>
             <div class="row">
-                <div class="span8">
+                <div class="col-sm-8">
                     <g:if test="${publicacion}">
-                        <div class="row-fluid">
-                            <div class="span12">
+                        <div class="row">
+                            <div class="col-sm-12">
                                 <blockquote>
                                     <p>${versiculo.contenido}</p>
                                 </blockquote>
                             </div>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span3"><g:link mapping="estudia" params="[anio:ayer.anio, trimestre:ayer.trimestre, leccion:ayer.leccion, dia:ayer.dia]"><i class="icon-chevron-left"></i> Anterior</g:link></div>
-                            <div class="span6" style="text-align: center;"><g:formatDate date="${hoy}" format="EEEE dd/MMM/yyyy" locale="es" /></div>
-                            <div class="span3" style="text-align: right;"><g:link mapping="estudia" params="[anio:manana.anio, trimestre:manana.trimestre, leccion:manana.leccion, dia:manana.dia]">Siguiente <i class="icon-chevron-right"></i></g:link></div>
+                        <div class="row">
+                            <div class="col-sm-3"><g:link mapping="estudia" params="[anio:ayer.anio, trimestre:ayer.trimestre, leccion:ayer.leccion, dia:ayer.dia]"><i class="icon-chevron-left"></i> Anterior</g:link></div>
+                            <div class="col-sm-6" style="text-align: center;"><g:formatDate date="${hoy}" format="EEEE dd/MMM/yyyy" locale="es" /></div>
+                            <div class="col-sm-3" style="text-align: right;"><g:link mapping="estudia" params="[anio:manana.anio, trimestre:manana.trimestre, leccion:manana.leccion, dia:manana.dia]">Siguiente <i class="icon-chevron-right"></i></g:link></div>
                         </div>
-                        <div class="row-fluid leccion">
-                            <div class="span12">
+                        <div class="row leccion">
+                            <div class="col-sm-12">
                                 <h1 style="text-align: center;">${publicacion.titulo}</h1>
                                 ${publicacion.contenido}
                             </div>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span12">
+                        <div class="row">
+                            <div class="col-sm-12">
                                 ${publicacion.vistas} Visitas
                             </div>
                         </div>
-                        <div class="row-fluid">
-                            <div id="comentarios" class="span12">
+                        <div class="row">
+                            <div id="comentarios" class="col-sm-12">
                                 <!-- AddThis Button BEGIN -->
                                 <div class="addthis_toolbox addthis_default_style ">
                                     <a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="115"></a>
@@ -64,12 +64,12 @@
                                     })();
                                 </script>
                                 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                                <a href="http://disqus.com" class="dsq-brlink">comments powered by <col-sm- class="logo-disqus">Disqus</col-sm-></a>
                             </div>
                         </div>
                     </g:if>
                 </div>
-                <div class="span4">
+                <div class="col-sm-4">
                     <form id="navegaForm" name="navegaForm" action="${createLink(action: 'buscaFecha')}" method="post">
                         <input type="hidden" name="fechaNavegaTxt" id="fechaNavegaTxt" />
                         <div id="fechaNavega"></div>
@@ -199,9 +199,9 @@
                     items.push('<p><a class="anterior" href="'
                         +'${createLink(controller:"biblia", action:"vers")}'
                         +'/'+(idInicio-5)+'"><i class="icon-chevron-left"></i> Anterior</a>'
-                        +'<span class="pull-right"><a class="siguiente" href="'
+                        +'<col-sm- class="pull-right"><a class="siguiente" href="'
                         +'${createLink(controller:"biblia", action:"vers")}'
-                        +'/'+(idFinal+1)+'">Siguiente <i class="icon-chevron-right"></i></a></span></p>')
+                        +'/'+(idFinal+1)+'">Siguiente <i class="icon-chevron-right"></i></a></col-sm-></p>')
                 }
                 return items.join('');
             }

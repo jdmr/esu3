@@ -8,11 +8,10 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="row-fluid">
+		<div class="row">
 			
-			<div class="span3">
-				<div class="well">
-					<ul class="nav nav-list">
+			<div class="col-sm-3">
+					<ul class="nav esu-sidenav">
 						<li class="nav-header">${entityName}</li>
 						<li>
 							<g:link class="list" action="list">
@@ -27,10 +26,9 @@
 							</g:link>
 						</li>
 					</ul>
-				</div>
 			</div>
 			
-			<div class="span9">
+			<div class="col-sm-9">
 
 				<div class="page-header">
 					<h1><g:message code="default.show.label" args="[entityName]" /></h1>
@@ -131,7 +129,7 @@
 				<g:form>
 					<g:hiddenField name="id" value="${usuarioInstance?.id}" />
 					<div class="form-actions">
-						<g:link class="btn" action="edit" id="${usuarioInstance?.id}">
+						<g:link class="btn btn-default" action="edit" id="${usuarioInstance?.id}">
 							<i class="icon-pencil"></i>
 							<g:message code="default.button.edit.label" default="Edit" />
 						</g:link>

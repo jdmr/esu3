@@ -8,29 +8,27 @@
         <ckeditor:resources/>
 	</head>
 	<body>
-		<div class="row-fluid">
+		<div class="row">
 
-			<div class="span3">
-				<div class="well">
-					<ul class="nav nav-list">
-						<li class="nav-header">${entityName}</li>
-						<li>
-							<g:link class="list" action="list">
-								<i class="icon-list"></i>
-								<g:message code="default.list.label" args="[entityName]" />
-							</g:link>
-						</li>
-						<li>
-							<g:link class="create" action="create">
-								<i class="icon-plus"></i>
-								<g:message code="default.create.label" args="[entityName]" />
-							</g:link>
-						</li>
-					</ul>
-				</div>
+			<div class="col-sm-3">
+                <ul class="nav esu-sidenav">
+                    <li class="nav-header">${entityName}</li>
+                    <li>
+                        <g:link class="list" action="list">
+                            <i class="icon-list"></i>
+                            <g:message code="default.list.label" args="[entityName]" />
+                        </g:link>
+                    </li>
+                    <li>
+                        <g:link class="create" action="create">
+                            <i class="icon-plus"></i>
+                            <g:message code="default.create.label" args="[entityName]" />
+                        </g:link>
+                    </li>
+                </ul>
 			</div>
 			
-			<div class="span9">
+			<div class="col-sm-9">
 
 				<div class="page-header">
 					<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
@@ -50,24 +48,20 @@
 				</bootstrap:alert>
 				</g:hasErrors>
 
-				<fieldset>
-					<g:form class="form-horizontal" action="edit" id="${articuloInstance?.id}" >
-						<g:hiddenField name="version" value="${articuloInstance?.version}" />
-						<fieldset>
-                            <g:render template="form" />
-							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">
-									<i class="icon-ok icon-white"></i>
-									<g:message code="default.button.update.label" default="Update" />
-								</button>
-								<button type="submit" class="btn btn-danger" name="_action_delete" formnovalidate>
-									<i class="icon-trash icon-white"></i>
-									<g:message code="default.button.delete.label" default="Delete" />
-								</button>
-							</div>
-						</fieldset>
-					</g:form>
-				</fieldset>
+                <g:form action="edit" id="${articuloInstance?.id}" >
+                    <g:hiddenField name="version" value="${articuloInstance?.version}" />
+                    <g:render template="form" />
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="icon-ok icon-white"></i>
+                            <g:message code="default.button.update.label" default="Update" />
+                        </button>
+                        <button type="submit" class="btn btn-danger" name="_action_delete" formnovalidate>
+                            <i class="icon-trash icon-white"></i>
+                            <g:message code="default.button.delete.label" default="Delete" />
+                        </button>
+                    </div>
+                </g:form>
 
 			</div>
 

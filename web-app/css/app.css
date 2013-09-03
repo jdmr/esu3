@@ -1,23 +1,52 @@
 @import url('http://fonts.googleapis.com/css?family=Ubuntu');
 
 body {
-    padding-top: 170px;
-    font: 1em/1.625em 'Ubuntu',Tahoma,sans-serif;
+    padding-top: 160px;
+    font: 16px/1.625em 'Ubuntu',Tahoma,sans-serif;
     font-size-adjust:none;
     font-style:normal;
     font-variant:normal;
     font-weight:normal;
+    text-rendering: optimizeLegibility
 }
 
-body > .navbar > .navbar-inner {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Ubuntu',Tahoma,sans-serif;
+}
+
+.navbar {
     padding: 0;
     background: #fff;
     border:0;
     border-radius:0;
-    box-shadow:0;
+    -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 1px 10px rgba(0,0,0,.1);
+    box-shadow: 0 1px 10px rgba(0,0,0,.1);
 }
 
-body > .footer {
+.navbar-form {
+    padding: 0;
+}
+
+.esu-sidenav {
+    padding: 0;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #FAFAFA;
+    border-radius: 5px;
+}
+
+.esu-sidenav > li.nav-header {
+    padding: 5px;
+}
+
+.esu-sidenav > li.active > a, .esu-sidenav > li.active:hover > a, .esu-sidenav > li.active:focus > a {
+    font-weight: bold;
+    color: #808080;
+    background-color: #EEEEEE;
+    border-right: 1px solid #808080;
+}
+
+.footer {
     margin-top: 20px;
     padding: 20px 0;
     background-color: #FAFAFA;
@@ -29,8 +58,13 @@ body > .footer {
     border-left: 0;
 }
 
-.navbar .brand {
-    font-size: 3em;
+.navbar-brand {
+    float: none;
+    padding: 0;
+}
+
+.navbar-collapse {
+    padding: 0;
 }
 
 .versiculo > p {
@@ -71,10 +105,6 @@ body > .footer {
 /* Tablet to desktop
 ------------------------- */
 @media (min-width: 768px) and (max-width: 980px) {
-    /* Remove any padding from the body */
-    body {
-        padding-top: 0;
-    }
 
     .navbar .brand {
         font-size: 2em;
@@ -84,13 +114,24 @@ body > .footer {
 /* Tablet
 ------------------------- */
 @media (max-width: 767px) {
-    /* Remove any padding from the body */
     body {
-        padding-top: 0;
+        padding-top: 120px;
+    }
+
+    .navbar {
+        padding: 0 5px;
     }
 
     .navbar .brand {
         font-size: 1.5em;
+    }
+
+    .navbar-form .form-group {
+        padding: 0 15px;
+    }
+
+    .navbar-toggle {
+        margin-top: 30px;
     }
 
     .leftfooter {
@@ -106,10 +147,6 @@ body > .footer {
 /* Landscape phones
 ------------------------- */
 @media (max-width: 480px) {
-    /* Remove padding above jumbotron */
-    body {
-        padding-top: 0;
-    }
 
     .navbar .brand {
         font-size: 1.5em;

@@ -7,14 +7,12 @@
 </head>
 <body>
     <div class="row">
-        <div class="span12">
+        <div class="col-sm-12">
             <g:each in="${results}" var="articulo">
                 <a href="${createLink(action:'ver', id:articulo.id)}"><h3>${articulo.titulo}</h3></a>
                 <p>${articulo.descripcion}</p>
             </g:each>
-            <div class="pagination">
-                <g:paginate total="${total}" params="[filtro:filtro]" />
-            </div>
+            <g:paginate total="${total}" params="[filtro:filtro]" />
         </div>
     </div>
 </body>

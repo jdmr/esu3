@@ -8,11 +8,10 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="row-fluid">
+		<div class="row">
 			
-			<div class="span3">
-				<div class="well">
-					<ul class="nav nav-list">
+			<div class="col-sm-3">
+					<ul class="nav esu-sidenav">
 						<li class="nav-header">${entityName}</li>
 						<li class="active">
 							<g:link class="list" action="list">
@@ -27,10 +26,9 @@
 							</g:link>
 						</li>
 					</ul>
-				</div>
 			</div>
 
-			<div class="span9">
+			<div class="col-sm-9">
 				
 				<div class="page-header">
 					<h1><g:message code="default.list.label" args="[entityName]" /></h1>
@@ -74,9 +72,7 @@
 					</g:each>
 					</tbody>
 				</table>
-				<div class="pagination">
-					<bootstrap:paginate total="${trimestreInstanceTotal}" />
-				</div>
+                <g:paginate total="${trimestreInstanceTotal}" />
 			</div>
 
 		</div>

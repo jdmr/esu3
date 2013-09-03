@@ -6,17 +6,14 @@
 	</head>
 	<body>
         <div class="row">
-            <div class="span3">
-                <div class="well" style="padding: 8px 0;">
-                    <ul class="nav nav-list">
-                        <li class="nav-header">Conócenos</li>
-                        <li class="active"><a href="${createLink(controller:'conocenos')}">Acerca de Nosotros</a></li>
-                        <li><a href="${createLink(action:'equipo')}">Equipo</a></li>
-                        <li><a href="${createLink(action:'contacto')}">Contacto</a></li>
-                    </ul>
-                </div>
+            <div class="col-sm-3">
+                <ul class="nav esu-sidenav">
+                    <li class="active"><a href="${createLink(controller:'conocenos')}">Acerca de Nosotros</a></li>
+                    <li><a href="${createLink(action:'equipo')}">Equipo</a></li>
+                    <li><a href="${createLink(action:'contacto')}">Contacto</a></li>
+                </ul>
             </div>
-            <div class="span9">
+            <div class="col-sm-9">
                 <h1>Acerca de Nosotros</h1>
                 <p>"EscuelaSabáticaUniversitaria.org" (ESU) aprovecha las nuevas tecnologías de la información para la propagación del evangelio. Se trata de un sitio web dirigido especialmente a <em>estudiantes universitarios</em> y <em>jóvenes profesionales</em> que provee recursos de información en un ambiente de interpretación confiable, ideas frescas para comunicar el evangelio, y una comunidad atractiva y amena. Todo esto gira en torno al estudio de la lección de la Escuela Sabática.</p>
                 <h1>Misión</h1>

@@ -6,23 +6,20 @@
 	</head>
 	<body>
         <div class="row">
-            <div class="span3">
-                <div class="well" style="padding: 8px 0;">
-                    <ul class="nav nav-list">
-                        <li class="nav-header">Conócenos</li>
-                        <li><a href="${createLink(controller:'conocenos')}">Acerca de Nosotros</a></li>
-                        <li class="active"><a href="${createLink(action:'equipo')}">Equipo</a></li>
-                        <li><a href="${createLink(action:'contacto')}">Contacto</a></li>
-                    </ul>
-                </div>
+            <div class="col-sm-3">
+                <ul class="nav esu-sidenav">
+                    <li><a href="${createLink(controller:'conocenos')}">Acerca de Nosotros</a></li>
+                    <li class="active"><a href="${createLink(action:'equipo')}">Equipo</a></li>
+                    <li><a href="${createLink(action:'contacto')}">Contacto</a></li>
+                </ul>
             </div>
-            <div class="span9">
+            <div class="col-sm-9">
                 <h1>Equipo</h1>
                 <g:each in="${perfiles}" var="perfil">
                     <hr/>
-                    <div class="row-fluid">
-                        <div class="span3">${perfil.usuario.nombreCompleto}<br/>${perfil.usuario.username}</div>
-                        <div class="span9">
+                    <div class="row">
+                        <div class="col-sm-3">${perfil.usuario.nombreCompleto}<br/>${perfil.usuario.username}</div>
+                        <div class="col-sm-9">
                             <g:if test="${perfil.texto}">
                                 <p>${perfil.texto}</p>
                             </g:if>
