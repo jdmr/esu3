@@ -26,6 +26,8 @@ class UrlMappings {
 
         "/channel"(controller:'inicio', action: 'channel')
 
+        "/robots.txt" (view: '/robots')
+
         "/"(controller: "inicio")
 
         "500"(view: '/error')
