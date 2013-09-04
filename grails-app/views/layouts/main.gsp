@@ -5,10 +5,10 @@
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><g:message code="project.name"/> - <g:layoutTitle default="ESU"/></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
     <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
     <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
@@ -22,61 +22,56 @@
           <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
       <![endif]-->
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Men&uacute;</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <a class="navbar-brand" href="${createLink(controller: 'inicio')}"><img
-                        src="${resource(dir: 'images', file: 'logo.jpg')}" alt="Escuela Sabática Universitaria"/>
-                </a>
-            </div>
-            <div class="row">
-                <div class="col-sm-12"></div>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li <g:if test="${request.getRequestURI().startsWith("/inicio")}">class="active"</g:if>><a
-                            href="${createLink(controller: 'inicio')}"><g:message code="inicio.label"/></a></li>
-                    <li <g:if test="${request.getRequestURI().startsWith("/estudia")}">class="active"</g:if>><a
-                            href="${createLink(controller: 'estudia')}"><g:message code="estudia.label"/></a></li>
-                    <li <g:if test="${request.getRequestURI().startsWith("/profundiza")}">class="active"</g:if>><a
-                            href="${createLink(controller: 'profundiza')}"><g:message code="dialoga.label"/></a></li>
-                    <li <g:if test="${request.getRequestURI().startsWith("/comparte")}">class="active"</g:if>><a
-                            href="${createLink(controller: 'comparte')}"><g:message code="comunica.label"/></a></li>
-                    <li <g:if test="${request.getRequestURI().startsWith("/conocenos")}">class="active"</g:if>><a
-                            href="${createLink(controller: 'conocenos')}"><g:message code="conocenos.label"/></a></li>
-                    <sec:ifAllGranted roles="ROLE_ADMIN">
-                        <li <g:if test="${request.getRequestURI().startsWith("/trimestre")}">class="active"</g:if>><a
-                                href="${createLink(controller: 'trimestre')}"><g:message code="trimestre.lista"/></a>
-                        </li>
-                    </sec:ifAllGranted>
-                    <sec:ifAllGranted roles="ROLE_AUTOR">
-                        <li <g:if test="${request.getRequestURI().startsWith("/articulo")}">class="active"</g:if>><a
-                                href="${createLink(controller: 'articulo')}"><g:message code="articulo.lista"/></a></li>
-                    </sec:ifAllGranted>
-                    <sec:ifAllGranted roles="ROLE_ADMIN">
-                        <li <g:if test="${request.getRequestURI().startsWith("/usuario")}">class="active"</g:if>><a
-                                href="${createLink(controller: 'usuario')}"><g:message code="usuario.lista.title"/></a>
-                        </li>
-                    </sec:ifAllGranted>
-                    <sec:ifLoggedIn>
-                        <li><a href="${createLink(uri: '/logout')}"><g:message code="salir.label"/></a></li>
-                    </sec:ifLoggedIn>
-                </ul>
-                <g:form controller="buscar" action="articulo" method="get" class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="<g:message code='buscar.label'/>" id="filtro" name="filtro">
-                    </div>
-                </g:form>
-            </div>
+<header class="navbar navbar-default navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="${createLink(controller: 'inicio')}" class="navbar-brand"><img
+                    src="${resource(dir: 'images', file: 'logo.jpg')}" alt="Escuela Sabática Universitaria"/></a>
         </div>
-</div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li <g:if test="${request.getRequestURI().startsWith("/inicio")}">class="active"</g:if>><a
+                        href="${createLink(controller: 'inicio')}"><g:message code="inicio.label"/></a></li>
+                <li <g:if test="${request.getRequestURI().startsWith("/estudia")}">class="active"</g:if>><a
+                        href="${createLink(controller: 'estudia')}"><g:message code="estudia.label"/></a></li>
+                <li <g:if test="${request.getRequestURI().startsWith("/profundiza")}">class="active"</g:if>><a
+                        href="${createLink(controller: 'profundiza')}"><g:message code="dialoga.label"/></a></li>
+                <li <g:if test="${request.getRequestURI().startsWith("/comparte")}">class="active"</g:if>><a
+                        href="${createLink(controller: 'comparte')}"><g:message code="comunica.label"/></a></li>
+                <li <g:if test="${request.getRequestURI().startsWith("/conocenos")}">class="active"</g:if>><a
+                        href="${createLink(controller: 'conocenos')}"><g:message code="conocenos.label"/></a></li>
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+                    <li <g:if test="${request.getRequestURI().startsWith("/trimestre")}">class="active"</g:if>><a
+                            href="${createLink(controller: 'trimestre')}"><g:message code="trimestre.lista"/></a>
+                    </li>
+                </sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_AUTOR">
+                    <li <g:if test="${request.getRequestURI().startsWith("/articulo")}">class="active"</g:if>><a
+                            href="${createLink(controller: 'articulo')}"><g:message code="articulo.lista"/></a></li>
+                </sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+                    <li <g:if test="${request.getRequestURI().startsWith("/usuario")}">class="active"</g:if>><a
+                            href="${createLink(controller: 'usuario')}"><g:message code="usuario.lista.title"/></a>
+                    </li>
+                </sec:ifAllGranted>
+                <sec:ifLoggedIn>
+                    <li><a href="${createLink(uri: '/logout')}"><g:message code="salir.label"/></a></li>
+                </sec:ifLoggedIn>
+            </ul>
+            <g:form controller="buscar" action="articulo" method="get" class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="<g:message code='buscar.label'/>" id="filtro" name="filtro">
+                </div>
+            </g:form>
+        </nav>
+    </div>
+</header>
 
 <div class="container">
 
