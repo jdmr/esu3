@@ -91,6 +91,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     text-align: right;
 }
 
+#anuncio {
+    height: 100px;
+}
+
 /* Desktop large
 ------------------------- */
 @media (min-width: 1200px) {
@@ -126,6 +130,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         font-size: 1.5em;
     }
 
+    .navbar-header {
+        float: right;
+    }
+
     .navbar-form .form-group {
         padding: 0 15px;
     }
@@ -142,6 +150,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         text-align: center;
     }
 
+    #anuncio {
+        display: none;
+    }
 }
 
 /* Landscape phones
@@ -150,6 +161,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
     .navbar-brand > img {
         width: 75%;
+    }
+
+    .navbar-toggle {
+        margin-top: 15px;
     }
 
     .navbar .brand {
