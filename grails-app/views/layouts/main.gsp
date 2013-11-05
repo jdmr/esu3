@@ -35,7 +35,7 @@
         </div>
         <a href="${createLink(controller: 'inicio')}" class="navbar-brand"><img
                 src="${resource(dir: 'images', file: 'logo.jpg')}" alt="Escuela Sabática Universitaria"/></a>
-        <img id="anuncio" src="${resource(dir: 'images', file: 'ANUNCIOES.png')}" alt="Folleto Escuela Sabática"/>
+        <!-- img id="anuncio" src="${resource(dir: 'images', file: 'ANUNCIOES.png')}" alt="Folleto Escuela Sabática"/ -->
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li <g:if test="${request.getRequestURI().startsWith("/inicio")}">class="active"</g:if>><a
