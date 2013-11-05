@@ -28,7 +28,7 @@ class Publicacion implements Serializable {
         trimestre blank: false, maxSize: 2, inList: ['t1', 't2', 't3', 't4']
         leccion blank: false, maxSize: 3, inList: ['l01', 'l02', 'l03', 'l04', 'l05', 'l06', 'l07', 'l08', 'l09', 'l10', 'l11', 'l12', 'l13', 'l14']
         dia nullable: true, maxSize: 10, inList: ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado']
-        tipo blank: false, maxSize: 10, inList: ['comunica', 'dialoga', 'leccion', 'versiculo', 'video', 'imagen', 'jovenes']
+        tipo blank: false, maxSize: 10, inList: ['comunica', 'dialoga', 'leccion', 'versiculo', 'video', 'imagen', 'jovenes', 'podcast']
         tema nullable: true, inList: ['tema1','tema2','tema3','tema4','tema5']
         estatus blank: false, maxSize: 10, inList: ['PUBLICADO', 'PENDIENTE', 'RECHAZADO']
     }

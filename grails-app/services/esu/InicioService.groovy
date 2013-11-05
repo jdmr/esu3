@@ -35,6 +35,14 @@ class InicioService {
             video.contenido = video.es.contenido
         }
 
+        Publicacion podcast = Publicacion.find("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'podcast'])
+        log.debug("Podcast: $podcast")
+        if (podcast) {
+            podcast.titulo = podcast.es.titulo
+            podcast.descripcion = podcast.es.descripcion
+            podcast.contenido = podcast.es.contenido
+        }
+
         List<Publicacion> dialoga = Publicacion.findAll("from Publicacion where anio = :anio and trimestre = :trimestre and leccion = :leccion and tipo = :tipo and estatus = 'PUBLICADO'", [anio: aniol, trimestre: trimestre, leccion: leccion, tipo: 'dialoga'])
         for(publicacion in dialoga) {
             log.debug("$publicacion $publicacion.es")
@@ -71,7 +79,7 @@ class InicioService {
         log.debug("WEEKS4: ${cal.get(Calendar.WEEK_OF_YEAR)}")
         Date hoy = cal.time
 
-        return [leccion: leccion1, dialoga: dialoga, comunica: comunica, video: video, versiculo: versiculo, hoy: hoy]
+        return [leccion: leccion1, dialoga: dialoga, comunica: comunica, video: video, podcast: podcast, versiculo: versiculo, hoy: hoy]
     }
 
     def inicio(params) {

@@ -23,6 +23,15 @@
                 </g:if>
             </div>
         </div>
+        <g:if test="${podcast}">
+            <div class="row">
+                <div class="col-sm-12">
+                    Podcast: <audio controls="controls" style="width: 80%;">
+                        <source src="${podcast.contenido}" type="audio/mpeg"> Tu explorador no soporta el elemento de audio.</source>
+                    </audio>
+                </div>
+            </div>
+        </g:if>
         <g:if test="${versiculo}">
             <div class="row">
                 <div class="col-sm-12 well versiculo" style="margin-bottom: 0px;margin-top: 10px;">
