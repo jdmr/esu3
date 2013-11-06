@@ -115,6 +115,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 }
 
+@media (min-width: 768px) {
+    #searchDiv {
+        display: none;
+    }
+}
+
 /* Tablet
 ------------------------- */
 @media (max-width: 767px) {
@@ -153,6 +159,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     #anuncio {
         display: none;
     }
+
+    #buscarForm {
+        display: none;
+    }
+
 }
 
 /* Landscape phones

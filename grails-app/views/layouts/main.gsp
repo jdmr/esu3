@@ -66,7 +66,7 @@
                     <li><a href="${createLink(uri: '/logout')}"><g:message code="salir.label"/></a></li>
                 </sec:ifLoggedIn>
             </ul>
-            <g:form controller="buscar" action="articulo" method="get" class="navbar-form navbar-right" role="search">
+            <g:form controller="buscar" action="articulo" method="get" class="navbar-form navbar-right" role="search" name="buscarForm" >
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="<g:message code='buscar.label'/>" id="filtro" name="filtro">
                 </div>
@@ -77,6 +77,15 @@
 
 <div class="container">
 
+    <div class="row" id="searchDiv">
+        <div class="col-sm-12">
+            <g:form controller="buscar" action="articulo" method="get" class="navbar-form navbar-right" role="search" name="buscarForm2" >
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="<g:message code='buscar.label'/>" id="filtro2" name="filtro">
+                </div>
+            </g:form>
+        </div>
+    </div>
     <g:layoutBody/>
 
 </div>

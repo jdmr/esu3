@@ -9,6 +9,13 @@
             <title><g:message code="estudia.label" /></title>
         </g:else>
         <r:require modules="jquery-ui" />
+        <style>
+        @media (max-width: 767px) {
+            #estudia-sidebar {
+                display: none;
+            }
+        }
+        </style>
 	</head>
 	<body>
             <div class="row">
@@ -69,7 +76,7 @@
                         </div>
                     </g:if>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4" id="estudia-sidebar">
                     <form id="navegaForm" name="navegaForm" action="${createLink(action: 'buscaFecha')}" method="post">
                         <input type="hidden" name="fechaNavegaTxt" id="fechaNavegaTxt" />
                         <div id="fechaNavega"></div>
