@@ -18,7 +18,7 @@
                 <g:each in="${perfiles}" var="perfil">
                     <hr/>
                     <div class="row">
-                        <div class="col-sm-3">${perfil.usuario.nombreCompleto}<br/>${perfil.usuario.username}</div>
+                        <div class="col-sm-3">${perfil.usuario.nombreCompleto}</div>
                         <div class="col-sm-9">
                             <g:if test="${perfil.texto}">
                                 <p>${perfil.texto}</p>
