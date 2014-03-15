@@ -117,7 +117,7 @@
             </div>
 
             <div class="col-sm-5 rightfooter">
-                <h4>Powered by <a href="www.um.edu.mx" target="_blank">Universidad de Montemorelos</a></h4>
+                <h4>Powered by <a href="http://www.um.edu.mx" target="_blank">Universidad de Montemorelos</a></h4>
                 <sec:ifNotLoggedIn>
                     <a href="${createLink(uri: '/login/auth')}"><i class="icon-cog"></i></a>
                 </sec:ifNotLoggedIn>

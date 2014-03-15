@@ -1,7 +1,9 @@
 package esu
 
+import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured('ROLE_ADMIN')
 class UsuarioController {
 
     static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']

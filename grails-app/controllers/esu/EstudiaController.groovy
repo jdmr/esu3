@@ -1,7 +1,10 @@
 package esu
 
+import grails.plugin.springsecurity.annotation.Secured
+
 import java.text.SimpleDateFormat
 
+@Secured('permitAll')
 class EstudiaController {
 
     def articuloService

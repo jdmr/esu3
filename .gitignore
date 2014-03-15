@@ -2,6 +2,7 @@
 target
 .idea
 .idea/ant.xml
+.idea/**
 esu-grailsPlugins.iml
 esu.iml
 classes

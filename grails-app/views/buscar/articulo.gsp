@@ -10,7 +10,7 @@
         <div class="col-sm-12">
             <g:each in="${results}" var="articulo">
                 <a href="${createLink(action:'ver', id:articulo.id)}"><h3>${articulo.titulo}</h3></a>
-                <p>${articulo.descripcion}</p>
+                <p>${raw(articulo.descripcion)}</p>
             </g:each>
             <g:paginate total="${total}" params="[filtro:filtro]" />
         </div>

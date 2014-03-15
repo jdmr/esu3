@@ -57,7 +57,7 @@
 					<g:if test="${articuloInstance?.contenido}">
 						<dt><g:message code="articulo.contenido.label" default="Contenido" /></dt>
 						
-							<dd>${articuloInstance.contenido}</dd>
+							<dd>${raw(articuloInstance.contenido)}</dd>
 						
 					</g:if>
 				

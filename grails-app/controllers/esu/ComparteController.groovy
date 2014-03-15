@@ -1,5 +1,8 @@
 package esu
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured('permitAll')
 class ComparteController {
 
     def articuloService

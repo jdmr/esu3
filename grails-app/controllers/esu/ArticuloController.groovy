@@ -1,6 +1,6 @@
 package esu
 
-import grails.plugins.springsecurity.Secured
+import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_AUTOR'])

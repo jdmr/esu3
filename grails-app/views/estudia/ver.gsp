@@ -3,7 +3,7 @@
 	<head>
 		<meta name="layout" content="main"/>
         <g:if test="${publicacion}">
-            <title>${publicacion.titulo}</title>
+            <title>${raw(publicacion.titulo)}</title>
         </g:if>
         <g:else>
             <title><g:message code="estudia.label" /></title>
@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <blockquote>
-                                    <p>${versiculo.contenido}</p>
+                                    <p>${raw(versiculo.contenido)}</p>
                                 </blockquote>
                             </div>
                         </div>
@@ -35,8 +35,8 @@
                         </div>
                         <div class="row leccion">
                             <div class="col-sm-12">
-                                <h1 style="text-align: center;">${publicacion.titulo}</h1>
-                                ${publicacion.contenido}
+                                <h1 style="text-align: center;">${raw(publicacion.titulo)}</h1>
+                                ${raw(publicacion.contenido)}
                             </div>
                         </div>
                         <div class="row">
@@ -83,14 +83,14 @@
                     </form>
                     <div id="contenidoVersiculo"></div>
                     <g:each in="${dialoga}" var="otro">
-                        <h3><g:link mapping="dialoga" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${otro.titulo}</g:link></h3>
+                        <h3><g:link mapping="dialoga" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${raw(otro.titulo)}</g:link></h3>
                         <h5>Por ${otro.autor.nombreCompleto}</h5>
-                        ${otro.descripcion} <a href="${createLink(mapping: 'dialoga', params: [anio:otro.anio, trimestre: otro.trimestre, leccion: otro.leccion, tema:otro.tema])}"><g:message code="leer.mas.label"/></a>
+                        ${raw(otro.descripcion)} <a href="${createLink(mapping: 'dialoga', params: [anio:otro.anio, trimestre: otro.trimestre, leccion: otro.leccion, tema:otro.tema])}"><g:message code="leer.mas.label"/></a>
                     </g:each>
                     <g:each in="${comunica}" var="otro">
-                        <h3><g:link mapping="comunica" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${otro.titulo}</g:link></h3>
+                        <h3><g:link mapping="comunica" params="[anio:otro.anio, trimestre:otro.trimestre, leccion:otro.leccion, tema:otro.tema]">${raw(otro.titulo)}</g:link></h3>
                         <h5>Por ${otro.autor.nombreCompleto}</h5>
-                        ${otro.descripcion} <a href="${createLink(mapping: 'comunica', params: [anio:otro.anio, trimestre: otro.trimestre, leccion: otro.leccion, tema:otro.tema])}"><g:message code="leer.mas.label"/></a>
+                        ${raw(otro.descripcion)} <a href="${createLink(mapping: 'comunica', params: [anio:otro.anio, trimestre: otro.trimestre, leccion: otro.leccion, tema:otro.tema])}"><g:message code="leer.mas.label"/></a>
                     </g:each>
                 </div>
             </div>

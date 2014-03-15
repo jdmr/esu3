@@ -29,7 +29,7 @@
                                     <g:set var="articuloId" value="0" />
                                     <g:each in="${perfil.articulos}" var="articulo">
                                         <g:if test="${articulo.id != articuloId}">
-                                            <li><g:link mapping="${articulo.tipo}" params="[anio: articulo.anio, trimestre: articulo.trimestre, leccion:articulo.leccion, tema:articulo.tema]">${articulo.titulo}</g:link></li>
+                                            <li><g:link mapping="${articulo.tipo}" params="[anio: articulo.anio, trimestre: articulo.trimestre, leccion:articulo.leccion, tema:articulo.tema]">${raw(articulo.titulo)}</g:link></li>
                                         </g:if>
                                         <g:set var="articuloId" value="${articulo.id}" />
                                     </g:each>
