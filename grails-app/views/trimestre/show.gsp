@@ -25,6 +25,19 @@
                             <g:message code="default.create.label" args="[entityName]" />
                         </g:link>
                     </li>
+                    <li class="nav-header">Usuario</li>
+                    <li>
+                        <g:link class="list" controller="usuario" action="list">
+                            <i class="icon-list icon-white"></i>
+                            <g:message code="default.list.label" args="['Usuario']" />
+                        </g:link>
+                    </li>
+                    <li>
+                        <g:link class="create" controller="usuario" action="create">
+                            <i class="icon-plus"></i>
+                            <g:message code="default.create.label" args="['Usuario']" />
+                        </g:link>
+                    </li>
                 </ul>
 			</div>
 			

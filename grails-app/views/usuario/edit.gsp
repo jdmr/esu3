@@ -11,6 +11,19 @@
 
 			<div class="col-sm-3">
 					<ul class="nav esu-sidenav">
+                        <li class="nav-header">Trimestre</li>
+                        <li>
+                            <g:link class="list" controller="trimestre" action="list">
+                                <i class="icon-list icon-white"></i>
+                                <g:message code="default.list.label" args="['Trimestre']" />
+                            </g:link>
+                        </li>
+                        <li>
+                            <g:link class="create" controller="trimestre" action="create">
+                                <i class="icon-plus"></i>
+                                <g:message code="default.create.label" args="['Trimestre']" />
+                            </g:link>
+                        </li>
 						<li class="nav-header">${entityName}</li>
 						<li>
 							<g:link class="list" action="list">

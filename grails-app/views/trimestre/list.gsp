@@ -11,21 +11,34 @@
 		<div class="row">
 			
 			<div class="col-sm-3">
-					<ul class="nav esu-sidenav">
-						<li class="nav-header">${entityName}</li>
-						<li class="active">
-							<g:link class="list" action="list">
-								<i class="icon-list icon-white"></i>
-								<g:message code="default.list.label" args="[entityName]" />
-							</g:link>
-						</li>
-						<li>
-							<g:link class="create" action="create">
-								<i class="icon-plus"></i>
-								<g:message code="default.create.label" args="[entityName]" />
-							</g:link>
-						</li>
-					</ul>
+                <ul class="nav esu-sidenav">
+                    <li class="nav-header">${entityName}</li>
+                    <li class="active">
+                        <g:link class="list" action="list">
+                            <i class="icon-list icon-white"></i>
+                            <g:message code="default.list.label" args="[entityName]" />
+                        </g:link>
+                    </li>
+                    <li>
+                        <g:link class="create" action="create">
+                            <i class="icon-plus"></i>
+                            <g:message code="default.create.label" args="[entityName]" />
+                        </g:link>
+                    </li>
+                    <li class="nav-header">Usuario</li>
+                    <li>
+                        <g:link class="list" controller="usuario" action="list">
+                            <i class="icon-list icon-white"></i>
+                            <g:message code="default.list.label" args="['Usuario']" />
+                        </g:link>
+                    </li>
+                    <li>
+                        <g:link class="create" controller="usuario" action="create">
+                            <i class="icon-plus"></i>
+                            <g:message code="default.create.label" args="['Usuario']" />
+                        </g:link>
+                    </li>
+                </ul>
 			</div>
 
 			<div class="col-sm-9">

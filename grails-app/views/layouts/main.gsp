@@ -49,18 +49,14 @@
                 <li <g:if test="${request.getRequestURI().startsWith("/conocenos")}">class="active"</g:if>><a
                         href="${createLink(controller: 'conocenos')}"><g:message code="conocenos.label"/></a></li>
                 <sec:ifAllGranted roles="ROLE_ADMIN">
-                    <li <g:if test="${request.getRequestURI().startsWith("/trimestre")}">class="active"</g:if>><a
-                            href="${createLink(controller: 'trimestre')}"><g:message code="trimestre.lista"/></a>
+                    <li <g:if test="${request.getRequestURI().startsWith("/trimestre") ||
+                                      request.getRequestURI().startsWith("/usuario")}">class="active"</g:if>><a
+                            href="${createLink(controller: 'trimestre')}">Admin</a>
                     </li>
                 </sec:ifAllGranted>
                 <sec:ifAllGranted roles="ROLE_AUTOR">
                     <li <g:if test="${request.getRequestURI().startsWith("/articulo")}">class="active"</g:if>><a
                             href="${createLink(controller: 'articulo')}"><g:message code="articulo.lista"/></a></li>
-                </sec:ifAllGranted>
-                <sec:ifAllGranted roles="ROLE_ADMIN">
-                    <li <g:if test="${request.getRequestURI().startsWith("/usuario")}">class="active"</g:if>><a
-                            href="${createLink(controller: 'usuario')}"><g:message code="usuario.lista.title"/></a>
-                    </li>
                 </sec:ifAllGranted>
                 <sec:ifLoggedIn>
                     <li><a href="${createLink(uri: '/logout')}"><g:message code="salir.label"/></a></li>
@@ -129,18 +125,13 @@
 <g:javascript library="application"/>
 <r:script>
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-19803340-3']);
-    _gaq.push(['_trackPageview']);
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    (function () {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
+    ga('create', 'UA-19803340-3', 'escuelasabaticauniversitaria.org');
+    ga('send', 'pageview');
 
 </r:script>
 <r:layoutResources/>

@@ -199,4 +199,11 @@ class ArticuloService {
         Publicacion publicacion = Publicacion.find("from Publicacion where es.id = :articuloId",[articuloId: id])
         return publicacion
     }
+
+    def analisis(params) {
+        List articulos = Articulo.executeQuery("select distinct new map(a.id as id, a.titulo as titulo, a.autor.username as autor, a.vistas as vistas) from Articulo a, Publicacion p where p.es = a and p.estatus = 'PUBLICADO' and (p.tipo = 'comunica' or p.tipo = 'dialoga') order by a.vistas desc", [:], params)
+        List totalDeArticulos = Articulo.executeQuery("select count(distinct a) from Articulo a, Publicacion p where p.es = a and p.estatus = 'PUBLICADO' and (p.tipo = 'comunica' or p.tipo = 'dialoga')")
+//        Integer totalDeArticulos = Articulo.executeQuery("select count(a) from Publicacion p, Articulo a where p.es = a and p.estatus = 'PUBLICADO' and (p.tipo = 'comunica' or p.tipo = 'dialoga')")
+        return [articulos: articulos, totalDeArticulos: totalDeArticulos[0]]
+    }
 }

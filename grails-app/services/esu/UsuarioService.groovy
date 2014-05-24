@@ -43,4 +43,10 @@ class UsuarioService {
         usuario.delete(flush: true)
         return nombre
     }
+
+    String analisis(params) {
+        List autores = Usuario.executeQuery("select u from Usuario u", [:], params)
+        List totalDeAutores = Usuario.executeQuery("select count(u) from Usuario u")
+        return [autores: autores, totalDeAutores: totalDeAutores[0]]
+    }
 }
