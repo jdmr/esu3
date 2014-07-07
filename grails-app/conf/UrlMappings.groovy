@@ -27,6 +27,8 @@ class UrlMappings {
         "/channel"(controller:'inicio', action: 'channel')
 
         "/"(controller: "inicio")
+        
+        "/foros"(controller: "foro")
 
         "500"(view: '/error')
     }
