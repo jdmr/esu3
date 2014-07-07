@@ -48,6 +48,7 @@
                         href="${createLink(controller: 'comparte')}"><g:message code="comunica.label"/></a></li>
                 <li <g:if test="${request.getRequestURI().startsWith("/conocenos")}">class="active"</g:if>><a
                         href="${createLink(controller: 'conocenos')}"><g:message code="conocenos.label"/></a></li>
+                <li><a href="http://foro.escuelasabaticauniversitaria.org"><g:message code="foro.label"/></a></li>
                 <sec:ifAllGranted roles="ROLE_ADMIN">
                     <li <g:if test="${request.getRequestURI().startsWith("/trimestre") ||
                                       request.getRequestURI().startsWith("/usuario")}">class="active"</g:if>><a
