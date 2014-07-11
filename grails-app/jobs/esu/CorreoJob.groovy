@@ -3,7 +3,7 @@ package esu
 
 class CorreoJob {
     static triggers = {
-        cron name: 'enviaCorreos', cronExpression: "0 0 12 * * SAT"
+        cron name: 'enviaCorreos', cronExpression: "0 0 12 * * ?"
 //        simple repeatInterval: 5000l // execute job once in 5 seconds
     }
 
